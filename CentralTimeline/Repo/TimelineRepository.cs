@@ -9,7 +9,7 @@ namespace CentralTimeline.Repo {
 
         public Models.Timeline GetTimeline() {
 
-            return new Models.Timeline() { Name = "Test01" }; 
+            return new Models.Timeline() { Name = "Timeline" }; 
 
         }
 
