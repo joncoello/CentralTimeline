@@ -65,7 +65,7 @@ namespace CentralTimeline.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap ajax_loader {
             get {
-                object obj = ResourceManager.GetObject("ajax-loader", resourceCulture);
+                object obj = ResourceManager.GetObject("ajax_loader", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -76,16 +76,6 @@ namespace CentralTimeline.Properties {
         internal static System.Drawing.Bitmap businessman {
             get {
                 object obj = ResourceManager.GetObject("businessman", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap businessman__1_ {
-            get {
-                object obj = ResourceManager.GetObject("businessman (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,56 +96,6 @@ namespace CentralTimeline.Properties {
         internal static System.Drawing.Bitmap disc_jockey {
             get {
                 object obj = ResourceManager.GetObject("disc-jockey", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap home_logo {
-            get {
-                object obj = ResourceManager.GetObject("home-logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap location_pin_318_78238 {
-            get {
-                object obj = ResourceManager.GetObject("location-pin_318-78238", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap message {
-            get {
-                object obj = ResourceManager.GetObject("message", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap student {
-            get {
-                object obj = ResourceManager.GetObject("student", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap studying {
-            get {
-                object obj = ResourceManager.GetObject("studying", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
