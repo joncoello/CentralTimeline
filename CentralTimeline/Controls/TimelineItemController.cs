@@ -25,8 +25,9 @@ namespace CentralTimeline.Controls {
                 Due = item.Due,
                 IsComplete = item.IsComplete,
                 Name = item.Name,
-                Height = COLLAPSED_HEIGHT
-        };
+                Height = COLLAPSED_HEIGHT,
+                ControlBackColour = Color.White
+            };
             Item.PropertyChanged += Item_PropertyChanged;
         }
 
@@ -39,7 +40,7 @@ namespace CentralTimeline.Controls {
         }
 
         private async Task IsCompleteChanged() {
-            
+
             Item.LoadingIconImage = CentralTimeline.Properties.Resources.ajax_loader;
 
             // if the item has been marked complete then hide the checkbox control and show the loading image
@@ -83,7 +84,7 @@ namespace CentralTimeline.Controls {
             if (!Item.IsComplete) {
 
                 Item.AssignmentVisible = proposedState;
-                
+
                 if (proposedState) {
                     PanelBrush = Brushes.WhiteSmoke;
                     Item.ControlBackColour = Color.WhiteSmoke;
