@@ -24,13 +24,15 @@ namespace CentralTimeline.Controls {
                 flowLayoutPanel.Controls.Add(itemControl);
             }
         }
-
+        
         private void ItemControl_Highlighted(object sender, EventArgs e) {
             var itemControl = sender as ctlTimelineItem;
             foreach (var ctl in flowLayoutPanel.Controls) {
                 var i = ctl as ctlTimelineItem;
                 if (i != itemControl) {
+                    this.SuspendLayout();
                     i.Highlight(false);
+                    this.ResumeLayout();
                 }
             }
         }

@@ -49,7 +49,7 @@
             this.panel1.Controls.Add(this.lblName);
             this.panel1.Location = new System.Drawing.Point(100, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 63);
+            this.panel1.Size = new System.Drawing.Size(226, 48);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
@@ -62,7 +62,7 @@
             this.chkComplete.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkComplete.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkComplete.ForeColor = System.Drawing.Color.Gray;
-            this.chkComplete.Location = new System.Drawing.Point(214, 65);
+            this.chkComplete.Location = new System.Drawing.Point(136, 65);
             this.chkComplete.Name = "chkComplete";
             this.chkComplete.Size = new System.Drawing.Size(87, 23);
             this.chkComplete.TabIndex = 4;
@@ -81,6 +81,7 @@
             this.lblAssignment.Size = new System.Drawing.Size(95, 19);
             this.lblAssignment.TabIndex = 3;
             this.lblAssignment.Text = "lblAssignment";
+            this.lblAssignment.Visible = false;
             // 
             // lblDescription
             // 
@@ -105,13 +106,13 @@
             // 
             // lblDue
             // 
-            this.lblDue.AutoSize = true;
             this.lblDue.BackColor = System.Drawing.Color.White;
             this.lblDue.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDue.ForeColor = System.Drawing.Color.Gray;
-            this.lblDue.Location = new System.Drawing.Point(-1, 54);
+            this.lblDue.Location = new System.Drawing.Point(-4, 35);
             this.lblDue.Name = "lblDue";
-            this.lblDue.Size = new System.Drawing.Size(48, 19);
+            this.lblDue.Padding = new System.Windows.Forms.Padding(1);
+            this.lblDue.Size = new System.Drawing.Size(90, 19);
             this.lblDue.TabIndex = 2;
             this.lblDue.Text = "lblDue";
             this.lblDue.Click += new System.EventHandler(this.lblDue_Click);
@@ -125,10 +126,10 @@
             // 
             // picAssignedTo
             // 
-            this.picAssignedTo.Image = global::CentralTimeline.Properties.Resources.businessman;
-            this.picAssignedTo.Location = new System.Drawing.Point(19, 11);
+            this.picAssignedTo.Image = global::CentralTimeline.Properties.Resources.disc_jockey;
+            this.picAssignedTo.Location = new System.Drawing.Point(19, 2);
             this.picAssignedTo.Name = "picAssignedTo";
-            this.picAssignedTo.Size = new System.Drawing.Size(40, 40);
+            this.picAssignedTo.Size = new System.Drawing.Size(32, 32);
             this.picAssignedTo.TabIndex = 3;
             this.picAssignedTo.TabStop = false;
             // 
@@ -140,14 +141,14 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.picAssignedTo);
             this.Controls.Add(this.lblDue);
+            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.Name = "ctlTimelineItem";
-            this.Size = new System.Drawing.Size(407, 70);
+            this.Size = new System.Drawing.Size(329, 55);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlTimelineItem_Paint);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

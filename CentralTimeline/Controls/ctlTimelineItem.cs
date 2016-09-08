@@ -15,6 +15,10 @@ namespace CentralTimeline.Controls {
 
         private TimelineItem item;
         public event EventHandler Highlighted;
+        private const int COLLAPSED_HEIGHT = 55;
+        private const int EXPANDED_HEIGHT = 100;
+
+        private Brush _panelBrush = Brushes.White; 
 
         public ctlTimelineItem() {
             InitializeComponent();
@@ -23,7 +27,7 @@ namespace CentralTimeline.Controls {
         public ctlTimelineItem(TimelineItem item) {
             InitializeComponent();
             this.item = item;
-            this.Height = 70;
+            this.Height = COLLAPSED_HEIGHT;
         }
 
         protected override void OnLoad(EventArgs e) {
@@ -32,11 +36,11 @@ namespace CentralTimeline.Controls {
                 lblDescription.Text = item.Description;
                 lblName.Text = item.Name;
                 lblDue.Text = item.Due;
-                //if (item.AssignedToType == TimelineItem.AssignedType.Client) {
-                //    picAssignedTo.Image = CentralTimeline.Properties.Resources.businessman;
-                //} else {
-                //    picAssignedTo.Image = CentralTimeline.Properties.Resources.studying;
-                //}
+                if (item.AssignedToType == TimelineItem.AssignedType.Client) {
+                    picAssignedTo.Image = CentralTimeline.Properties.Resources.disc_jockey;
+                } else {
+                    picAssignedTo.Image = CentralTimeline.Properties.Resources.businessman;
+                }
                 lblAssignment.Text = item.Assignment;
                 chkComplete.Checked = item.IsComplete;
             }
@@ -44,17 +48,20 @@ namespace CentralTimeline.Controls {
 
         private void ctlTimelineItem_Paint(object sender, PaintEventArgs e) {
 
+            // define triangle pointing to stage
             var l = panel1.Location;
             var topPoint = new Point(l.X, l.Y + 10);
             var bottomPoint = new Point(l.X, l.Y + 30);
             var leftPoint = new Point(l.X - 10, l.Y + 20);
 
+            // fill it
             var pathToFill = new GraphicsPath(
                 new Point[] { topPoint, bottomPoint, leftPoint },
                 new byte[] { (byte)PathPointType.Line, (byte)PathPointType.Line, (byte)PathPointType.Line }
                 );
-            e.Graphics.FillPath(Brushes.White, pathToFill);
+            e.Graphics.FillPath(_panelBrush, pathToFill);
 
+            // draw border
             e.Graphics.DrawLine(Pens.LightGray, leftPoint, topPoint);
             e.Graphics.DrawLine(Pens.LightGray, leftPoint, bottomPoint);
 
@@ -90,17 +97,23 @@ namespace CentralTimeline.Controls {
 
         public void Highlight(bool proposedState) {
             if (!item.IsComplete) {
+
                 chkComplete.Visible = proposedState;
+                lblAssignment.Visible = proposedState;
+
                 if (proposedState) {
+                    _panelBrush = Brushes.WhiteSmoke;
                     panel1.BackColor = Color.WhiteSmoke;
-                    this.Height = 100;
+                    this.Height = EXPANDED_HEIGHT;
                     if (this.Highlighted!=null) {
                         this.Highlighted(this, EventArgs.Empty);
                     }
                 } else {
+                    _panelBrush = Brushes.White;
                     panel1.BackColor = Color.White;
-                    this.Height = 70;
+                    this.Height = COLLAPSED_HEIGHT;
                 }
+                this.Refresh();
             }
         }
 

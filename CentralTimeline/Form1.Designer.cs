@@ -32,7 +32,7 @@
             this.ctlTimeline1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctlTimeline1.Location = new System.Drawing.Point(0, 0);
             this.ctlTimeline1.Name = "ctlTimeline1";
-            this.ctlTimeline1.Size = new System.Drawing.Size(375, 685);
+            this.ctlTimeline1.Size = new System.Drawing.Size(327, 685);
             this.ctlTimeline1.TabIndex = 0;
             // 
             // Form1
@@ -40,7 +40,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(375, 685);
+            this.ClientSize = new System.Drawing.Size(327, 685);
             this.Controls.Add(this.ctlTimeline1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Form1";

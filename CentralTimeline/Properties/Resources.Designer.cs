@@ -83,6 +83,16 @@ namespace CentralTimeline.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap disc_jockey {
+            get {
+                object obj = ResourceManager.GetObject("disc-jockey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap home_logo {
             get {
                 object obj = ResourceManager.GetObject("home-logo", resourceCulture);
