@@ -26,13 +26,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctlTimelineItem));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.picProgress = new System.Windows.Forms.PictureBox();
             this.chkComplete = new System.Windows.Forms.CheckBox();
             this.lblAssignment = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblDue = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.picProgress = new System.Windows.Forms.PictureBox();
             this.picAssignedTo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
@@ -57,6 +57,18 @@
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
+            // 
+            // picProgress
+            // 
+            this.picProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.picProgress.Image = global::CentralTimeline.Properties.Resources.ajax_loader;
+            this.picProgress.Location = new System.Drawing.Point(206, 69);
+            this.picProgress.Name = "picProgress";
+            this.picProgress.Size = new System.Drawing.Size(16, 16);
+            this.picProgress.TabIndex = 5;
+            this.picProgress.TabStop = false;
+            this.picProgress.Visible = false;
+            this.picProgress.Click += new System.EventHandler(this.picProgress_Click);
             // 
             // chkComplete
             // 
@@ -126,18 +138,6 @@
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList.Images.SetKeyName(0, "studying.png");
             this.imageList.Images.SetKeyName(1, "student.png");
-            // 
-            // picProgress
-            // 
-            this.picProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.picProgress.Image = global::CentralTimeline.Properties.Resources.ajax_loader;
-            this.picProgress.Location = new System.Drawing.Point(206, 69);
-            this.picProgress.Name = "picProgress";
-            this.picProgress.Size = new System.Drawing.Size(16, 16);
-            this.picProgress.TabIndex = 5;
-            this.picProgress.TabStop = false;
-            this.picProgress.Visible = false;
-            this.picProgress.Click += new System.EventHandler(this.picProgress_Click);
             // 
             // picAssignedTo
             // 

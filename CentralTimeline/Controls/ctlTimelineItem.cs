@@ -123,10 +123,10 @@ namespace CentralTimeline.Controls {
 
         private async void chkComplete_CheckedChanged(object sender, EventArgs e) {
 
-            bool chkVisible = chkComplete.Visible;
-
             picProgress.Image = CentralTimeline.Properties.Resources.ajax_loader;
 
+            bool chkVisible = chkComplete.Visible;
+            
             item.IsComplete = chkComplete.Checked;
             if (chkVisible) {
                 chkComplete.Visible = false;
