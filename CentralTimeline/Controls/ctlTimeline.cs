@@ -26,15 +26,15 @@ namespace CentralTimeline.Controls {
         }
         
         private void ItemControl_Highlighted(object sender, EventArgs e) {
-            var itemControl = sender as ctlTimelineItem;
-            foreach (var ctl in flowLayoutPanel.Controls) {
-                var i = ctl as ctlTimelineItem;
-                if (i != itemControl) {
-                    this.SuspendLayout();
-                    i.Highlight(false);
-                    this.ResumeLayout();
-                }
-            }
+            //var itemControl = sender as ctlTimelineItem;
+            //foreach (var ctl in flowLayoutPanel.Controls) {
+            //    var i = ctl as ctlTimelineItem;
+            //    if (i != itemControl) {
+            //        this.SuspendLayout();
+            //        i.Highlight(false);
+            //        this.ResumeLayout();
+            //    }
+            //}
         }
 
         private void flowLayoutPanel_Paint(object sender, PaintEventArgs e) {

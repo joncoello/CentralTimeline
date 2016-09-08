@@ -67,7 +67,6 @@
             this.picProgress.Size = new System.Drawing.Size(16, 16);
             this.picProgress.TabIndex = 5;
             this.picProgress.TabStop = false;
-            this.picProgress.Visible = false;
             this.picProgress.Click += new System.EventHandler(this.picProgress_Click);
             // 
             // chkComplete
@@ -83,7 +82,6 @@
             this.chkComplete.TabIndex = 4;
             this.chkComplete.Text = "complete";
             this.chkComplete.UseVisualStyleBackColor = true;
-            this.chkComplete.Visible = false;
             this.chkComplete.CheckedChanged += new System.EventHandler(this.chkComplete_CheckedChanged);
             // 
             // lblAssignment

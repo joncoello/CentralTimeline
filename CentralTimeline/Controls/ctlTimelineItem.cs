@@ -18,7 +18,8 @@ namespace CentralTimeline.Controls {
         private const int COLLAPSED_HEIGHT = 55;
         private const int EXPANDED_HEIGHT = 100;
 
-        private Brush _panelBrush = Brushes.White; 
+        private Brush _panelBrush = Brushes.White;
+        private readonly TimelineItemController _controller;
 
         public ctlTimelineItem() {
             InitializeComponent();
@@ -28,22 +29,42 @@ namespace CentralTimeline.Controls {
             InitializeComponent();
             this.item = item;
             this.Height = COLLAPSED_HEIGHT;
+            _controller = new TimelineItemController(item);
         }
 
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            if (item != null) {
-                lblDescription.Text = item.Description;
-                lblName.Text = item.Name;
-                lblDue.Text = item.Due;
-                if (item.AssignedToType == TimelineItem.AssignedType.Client) {
-                    picAssignedTo.Image = CentralTimeline.Properties.Resources.disc_jockey;
-                } else {
-                    picAssignedTo.Image = CentralTimeline.Properties.Resources.businessman;
-                }
-                lblAssignment.Text = item.Assignment;
-                chkComplete.Checked = item.IsComplete;
+            if (_controller != null) {
+                BindProperties();
+
             }
+        }
+
+        private void BindProperties() {
+
+            lblDescription.DataBindings.Add("Text", item, "Description", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblName.DataBindings.Add("Text", item, "Name", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblDue.DataBindings.Add("Text", item, "Due", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblAssignment.DataBindings.Add("Text", item, "Assignment", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkComplete.DataBindings.Add("Checked", _controller.Item, "IsComplete", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            if (item.AssignedToType == TimelineItem.AssignedType.Client) {
+                picAssignedTo.Image = CentralTimeline.Properties.Resources.disc_jockey;
+            } else {
+                picAssignedTo.Image = CentralTimeline.Properties.Resources.businessman;
+            }
+
+            panel1.DataBindings.Add("BackColor", _controller.Item, "ControlBackColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblAssignment.DataBindings.Add("ForeColor", _controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblDue.DataBindings.Add("ForeColor", _controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblName.DataBindings.Add("ForeColor", _controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblDescription.DataBindings.Add("ForeColor", _controller.Item, "DescriptionForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkComplete.DataBindings.Add("Visible", _controller.Item, "IsCompleteVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            picProgress.DataBindings.Add("Image", _controller.Item, "LoadingIconImage", true, DataSourceUpdateMode.OnPropertyChanged);
+            picProgress.DataBindings.Add("Visible", _controller.Item, "LoadingIconVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            Highlight(true);
+
         }
 
         private void ctlTimelineItem_Paint(object sender, PaintEventArgs e) {
@@ -75,13 +96,13 @@ namespace CentralTimeline.Controls {
             e.Graphics.DrawLine(Pens.LightGray, 0, p.Height - 1, 0, 30);
             e.Graphics.DrawLine(Pens.LightGray, 0, 10, 0, 0);
         }
-        
+
         private void panel1_MouseEnter(object sender, EventArgs e) {
-            ChangeHighlight();
+            //ChangeHighlight();
         }
 
         private void panel1_MouseLeave(object sender, EventArgs e) {
-            ChangeHighlight();
+            //ChangeHighlight();
         }
 
         private void ChangeHighlight() {
@@ -89,23 +110,23 @@ namespace CentralTimeline.Controls {
             if (panel1.ClientRectangle.Contains(panel1.PointToClient(Cursor.Position))) {
                 proposedState = true;
             }
-            if (chkComplete.Visible != proposedState) {
+            if ((_controller.Item.ControlBackColour==Color.White) != proposedState) {
                 //chkComplete.Visible = proposedState;
                 Highlight(proposedState);
             }
         }
 
         public void Highlight(bool proposedState) {
-            if (!item.IsComplete) {
+            if (!_controller.Item.IsComplete) {
 
-                chkComplete.Visible = proposedState;
+                //chkComplete.Visible = proposedState;
                 lblAssignment.Visible = proposedState;
 
                 if (proposedState) {
                     _panelBrush = Brushes.WhiteSmoke;
                     panel1.BackColor = Color.WhiteSmoke;
                     this.Height = EXPANDED_HEIGHT;
-                    if (this.Highlighted!=null) {
+                    if (this.Highlighted != null) {
                         this.Highlighted(this, EventArgs.Empty);
                     }
                 } else {
@@ -121,42 +142,42 @@ namespace CentralTimeline.Controls {
 
         }
 
-        private async void chkComplete_CheckedChanged(object sender, EventArgs e) {
+        private void chkComplete_CheckedChanged(object sender, EventArgs e) {
 
-            picProgress.Image = CentralTimeline.Properties.Resources.ajax_loader;
+            //picProgress.Image = CentralTimeline.Properties.Resources.ajax_loader;
 
-            bool chkVisible = chkComplete.Visible;
-            
-            item.IsComplete = chkComplete.Checked;
-            if (chkVisible) {
-                chkComplete.Visible = false;
-                picProgress.Visible = true;
-            } 
+            //bool chkVisible = chkComplete.Visible;
 
-            if (chkComplete.Checked) {
-                panel1.BackColor = Color.WhiteSmoke;
-                lblDescription.ForeColor = Color.LightGray;
-                lblAssignment.ForeColor = Color.LightGray;
-                lblDue.ForeColor = Color.LightGray;
-                lblName.ForeColor = Color.LightGray;
-            } else {
-                panel1.BackColor = Color.White;
-                lblDescription.ForeColor = SystemColors.ControlText;
-                lblAssignment.ForeColor = Color.Gray;
-                lblDue.ForeColor = Color.Gray;
-                lblName.ForeColor = Color.Gray;
-            }
+            //item.IsComplete = chkComplete.Checked;
+            //if (chkVisible) {
+            //    chkComplete.Visible = false;
+            //    picProgress.Visible = true;
+            //} 
 
-            await Task.Run(() => {
-                 System.Threading.Thread.Sleep(2000);
-            });
+            //if (chkComplete.Checked) {
+            //    panel1.BackColor = Color.WhiteSmoke;
+            //    lblDescription.ForeColor = Color.LightGray;
+            //    lblAssignment.ForeColor = Color.LightGray;
+            //    lblDue.ForeColor = Color.LightGray;
+            //    lblName.ForeColor = Color.LightGray;
+            //} else {
+            //    panel1.BackColor = Color.White;
+            //    lblDescription.ForeColor = SystemColors.ControlText;
+            //    lblAssignment.ForeColor = Color.Gray;
+            //    lblDue.ForeColor = Color.Gray;
+            //    lblName.ForeColor = Color.Gray;
+            //}
 
-            picProgress.Image = CentralTimeline.Properties.Resources.check2;
+            //await Task.Run(() => {
+            //     System.Threading.Thread.Sleep(2000);
+            //});
 
-            if (!chkVisible) {
-                chkComplete.Visible = true;
-                picProgress.Visible = false;
-            }
+            //picProgress.Image = CentralTimeline.Properties.Resources.check2;
+
+            //if (!chkVisible) {
+            //    chkComplete.Visible = true;
+            //    picProgress.Visible = false;
+            //}
 
         }
 
