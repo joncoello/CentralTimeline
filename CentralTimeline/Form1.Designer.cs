@@ -28,17 +28,18 @@
             // 
             // ctlTimeline1
             // 
+            this.ctlTimeline1.BackColor = System.Drawing.SystemColors.Control;
             this.ctlTimeline1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctlTimeline1.Location = new System.Drawing.Point(0, 0);
             this.ctlTimeline1.Name = "ctlTimeline1";
-            this.ctlTimeline1.Size = new System.Drawing.Size(380, 558);
+            this.ctlTimeline1.Size = new System.Drawing.Size(380, 685);
             this.ctlTimeline1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 558);
+            this.ClientSize = new System.Drawing.Size(380, 685);
             this.Controls.Add(this.ctlTimeline1);
             this.Name = "Form1";
             this.Text = "Form1";
