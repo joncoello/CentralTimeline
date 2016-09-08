@@ -14,12 +14,8 @@ namespace CentralTimeline.Controls {
     public partial class ctlTimelineItem : UserControl {
 
         private TimelineItem item;
-        public event EventHandler Highlighted;
-        private const int COLLAPSED_HEIGHT = 55;
-        private const int EXPANDED_HEIGHT = 100;
-
-        private Brush _panelBrush = Brushes.White;
-        private readonly TimelineItemController _controller;
+        
+        public readonly TimelineItemController Controller;
 
         public ctlTimelineItem() {
             InitializeComponent();
@@ -28,13 +24,12 @@ namespace CentralTimeline.Controls {
         public ctlTimelineItem(TimelineItem item) {
             InitializeComponent();
             this.item = item;
-            this.Height = COLLAPSED_HEIGHT;
-            _controller = new TimelineItemController(item);
+            Controller = new TimelineItemController(item);
         }
 
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            if (_controller != null) {
+            if (Controller != null) {
                 BindProperties();
 
             }
@@ -46,7 +41,7 @@ namespace CentralTimeline.Controls {
             lblName.DataBindings.Add("Text", item, "Name", false, DataSourceUpdateMode.OnPropertyChanged);
             lblDue.DataBindings.Add("Text", item, "Due", false, DataSourceUpdateMode.OnPropertyChanged);
             lblAssignment.DataBindings.Add("Text", item, "Assignment", false, DataSourceUpdateMode.OnPropertyChanged);
-            chkComplete.DataBindings.Add("Checked", _controller.Item, "IsComplete", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkComplete.DataBindings.Add("Checked", Controller.Item, "IsComplete", false, DataSourceUpdateMode.OnPropertyChanged);
 
             if (item.AssignedToType == TimelineItem.AssignedType.Client) {
                 picAssignedTo.Image = CentralTimeline.Properties.Resources.disc_jockey;
@@ -54,16 +49,16 @@ namespace CentralTimeline.Controls {
                 picAssignedTo.Image = CentralTimeline.Properties.Resources.businessman;
             }
 
-            panel1.DataBindings.Add("BackColor", _controller.Item, "ControlBackColour", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblAssignment.DataBindings.Add("ForeColor", _controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblDue.DataBindings.Add("ForeColor", _controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblName.DataBindings.Add("ForeColor", _controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblDescription.DataBindings.Add("ForeColor", _controller.Item, "DescriptionForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
-            chkComplete.DataBindings.Add("Visible", _controller.Item, "IsCompleteVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            picProgress.DataBindings.Add("Image", _controller.Item, "LoadingIconImage", true, DataSourceUpdateMode.OnPropertyChanged);
-            picProgress.DataBindings.Add("Visible", _controller.Item, "LoadingIconVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-
-            Highlight(true);
+            panel1.DataBindings.Add("BackColor", Controller.Item, "ControlBackColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblAssignment.DataBindings.Add("ForeColor", Controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblDue.DataBindings.Add("ForeColor", Controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblName.DataBindings.Add("ForeColor", Controller.Item, "ControlForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblDescription.DataBindings.Add("ForeColor", Controller.Item, "DescriptionForeColour", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkComplete.DataBindings.Add("Visible", Controller.Item, "IsCompleteVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            picProgress.DataBindings.Add("Image", Controller.Item, "LoadingIconImage", true, DataSourceUpdateMode.OnPropertyChanged);
+            picProgress.DataBindings.Add("Visible", Controller.Item, "LoadingIconVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblAssignment.DataBindings.Add("Visible", Controller.Item, "AssignmentVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.DataBindings.Add("Height", Controller.Item, "Height", false, DataSourceUpdateMode.OnPropertyChanged);
 
         }
 
@@ -80,7 +75,7 @@ namespace CentralTimeline.Controls {
                 new Point[] { topPoint, bottomPoint, leftPoint },
                 new byte[] { (byte)PathPointType.Line, (byte)PathPointType.Line, (byte)PathPointType.Line }
                 );
-            e.Graphics.FillPath(_panelBrush, pathToFill);
+            e.Graphics.FillPath(Controller.PanelBrush, pathToFill);
 
             // draw border
             e.Graphics.DrawLine(Pens.LightGray, leftPoint, topPoint);
@@ -98,45 +93,22 @@ namespace CentralTimeline.Controls {
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e) {
-            //ChangeHighlight();
+            ChangeHighlight();
         }
 
         private void panel1_MouseLeave(object sender, EventArgs e) {
-            //ChangeHighlight();
+            ChangeHighlight();
         }
 
         private void ChangeHighlight() {
-            var proposedState = false;
             if (panel1.ClientRectangle.Contains(panel1.PointToClient(Cursor.Position))) {
-                proposedState = true;
-            }
-            if ((_controller.Item.ControlBackColour==Color.White) != proposedState) {
-                //chkComplete.Visible = proposedState;
-                Highlight(proposedState);
+                Controller.MouseEntersControl();
+            } else {
+                Controller.MouseLeavesControl();
             }
         }
 
-        public void Highlight(bool proposedState) {
-            if (!_controller.Item.IsComplete) {
-
-                //chkComplete.Visible = proposedState;
-                lblAssignment.Visible = proposedState;
-
-                if (proposedState) {
-                    _panelBrush = Brushes.WhiteSmoke;
-                    panel1.BackColor = Color.WhiteSmoke;
-                    this.Height = EXPANDED_HEIGHT;
-                    if (this.Highlighted != null) {
-                        this.Highlighted(this, EventArgs.Empty);
-                    }
-                } else {
-                    _panelBrush = Brushes.White;
-                    panel1.BackColor = Color.White;
-                    this.Height = COLLAPSED_HEIGHT;
-                }
-                this.Refresh();
-            }
-        }
+        
 
         private void lblDue_Click(object sender, EventArgs e) {
 

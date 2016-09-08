@@ -7,9 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CentralTimeline.Controls {
-    class TimelineItemController {
+    public class TimelineItemController {
 
         public readonly TimelineItemView Item;
+        public Brush PanelBrush = Brushes.White;
+
+        private const int COLLAPSED_HEIGHT = 55;
+        private const int EXPANDED_HEIGHT = 100;
+
+        public event EventHandler Highlighted;
 
         public TimelineItemController(TimelineItem item) {
             Item = new TimelineItemView() {
@@ -18,8 +24,9 @@ namespace CentralTimeline.Controls {
                 Description = item.Description,
                 Due = item.Due,
                 IsComplete = item.IsComplete,
-                Name = item.Name
-            };
+                Name = item.Name,
+                Height = COLLAPSED_HEIGHT
+        };
             Item.PropertyChanged += Item_PropertyChanged;
         }
 
@@ -63,7 +70,36 @@ namespace CentralTimeline.Controls {
             }
 
         }
-        
+
+        public void MouseEntersControl() {
+            Highlight(true);
+        }
+
+        public void MouseLeavesControl() {
+            Highlight(false);
+        }
+
+        public void Highlight(bool proposedState) {
+            if (!Item.IsComplete) {
+
+                Item.AssignmentVisible = proposedState;
+                
+                if (proposedState) {
+                    PanelBrush = Brushes.WhiteSmoke;
+                    Item.ControlBackColour = Color.WhiteSmoke;
+                    Item.Height = EXPANDED_HEIGHT;
+                    if (this.Highlighted != null) {
+                        this.Highlighted(this, EventArgs.Empty);
+                    }
+                } else {
+                    PanelBrush = Brushes.White;
+                    Item.ControlBackColour = Color.White;
+                    Item.Height = COLLAPSED_HEIGHT;
+                }
+                //this.Refresh();
+            }
+        }
+
     }
 
 }

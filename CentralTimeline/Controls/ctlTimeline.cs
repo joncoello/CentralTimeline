@@ -20,7 +20,7 @@ namespace CentralTimeline.Controls {
         public void DataBind(Timeline timeline) {
             foreach (var item in timeline.Items) {
                 var itemControl = new Controls.ctlTimelineItem(item) { Width = flowLayoutPanel.Width - 20, Anchor = AnchorStyles.Left & AnchorStyles.Right };
-                itemControl.Highlighted += ItemControl_Highlighted;
+                itemControl.Controller.Highlighted += ItemControl_Highlighted;
                 flowLayoutPanel.Controls.Add(itemControl);
             }
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 namespace CentralTimeline.Controls {
-    class TimelineItemView : TimelineItem {
+    public class TimelineItemView : TimelineItem {
 
         private Color _controlBackColour;
         public Color ControlBackColour {
@@ -83,6 +83,32 @@ namespace CentralTimeline.Controls {
                 if (value != _LoadingIconVisible) {
                     _LoadingIconVisible = value;
                     FirePropertyChanged("LoadingIconVisible");
+                }
+            }
+        }
+
+        private bool _assignmentVisible;
+        public bool AssignmentVisible {
+            get {
+                return _assignmentVisible;
+            }
+            set {
+                if (value != _assignmentVisible) {
+                    _assignmentVisible = value;
+                    FirePropertyChanged("AssignmentVisible");
+                }
+            }
+        }
+
+        private int _height;
+        public int Height {
+            get {
+                return _height;
+            }
+            set {
+                if (value != _height) {
+                    _height = value;
+                    FirePropertyChanged("Height");
                 }
             }
         }
