@@ -121,8 +121,18 @@ namespace CentralTimeline.Controls {
 
         }
 
-        private void chkComplete_CheckedChanged(object sender, EventArgs e) {
+        private async void chkComplete_CheckedChanged(object sender, EventArgs e) {
+
+            bool chkVisible = chkComplete.Visible;
+
+            picProgress.Image = CentralTimeline.Properties.Resources.ajax_loader;
+
             item.IsComplete = chkComplete.Checked;
+            if (chkVisible) {
+                chkComplete.Visible = false;
+                picProgress.Visible = true;
+            } 
+
             if (chkComplete.Checked) {
                 panel1.BackColor = Color.WhiteSmoke;
                 lblDescription.ForeColor = Color.LightGray;
@@ -136,6 +146,22 @@ namespace CentralTimeline.Controls {
                 lblDue.ForeColor = Color.Gray;
                 lblName.ForeColor = Color.Gray;
             }
+
+            await Task.Run(() => {
+                 System.Threading.Thread.Sleep(2000);
+            });
+
+            picProgress.Image = CentralTimeline.Properties.Resources.check2;
+
+            if (!chkVisible) {
+                chkComplete.Visible = true;
+                picProgress.Visible = false;
+            }
+
+        }
+
+        private void picProgress_Click(object sender, EventArgs e) {
+            chkComplete.Checked = false;
         }
     }
 }

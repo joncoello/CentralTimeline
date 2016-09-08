@@ -32,8 +32,10 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblDue = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.picProgress = new System.Windows.Forms.PictureBox();
             this.picAssignedTo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,13 +45,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.picProgress);
             this.panel1.Controls.Add(this.chkComplete);
             this.panel1.Controls.Add(this.lblAssignment);
             this.panel1.Controls.Add(this.lblDescription);
             this.panel1.Controls.Add(this.lblName);
             this.panel1.Location = new System.Drawing.Point(100, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(226, 48);
+            this.panel1.Size = new System.Drawing.Size(226, 89);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
@@ -124,6 +127,18 @@
             this.imageList.Images.SetKeyName(0, "studying.png");
             this.imageList.Images.SetKeyName(1, "student.png");
             // 
+            // picProgress
+            // 
+            this.picProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.picProgress.Image = global::CentralTimeline.Properties.Resources.ajax_loader;
+            this.picProgress.Location = new System.Drawing.Point(206, 69);
+            this.picProgress.Name = "picProgress";
+            this.picProgress.Size = new System.Drawing.Size(16, 16);
+            this.picProgress.TabIndex = 5;
+            this.picProgress.TabStop = false;
+            this.picProgress.Visible = false;
+            this.picProgress.Click += new System.EventHandler(this.picProgress_Click);
+            // 
             // picAssignedTo
             // 
             this.picAssignedTo.Image = global::CentralTimeline.Properties.Resources.disc_jockey;
@@ -143,10 +158,11 @@
             this.Controls.Add(this.lblDue);
             this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.Name = "ctlTimelineItem";
-            this.Size = new System.Drawing.Size(329, 55);
+            this.Size = new System.Drawing.Size(329, 96);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlTimelineItem_Paint);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picProgress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).EndInit();
             this.ResumeLayout(false);
 
@@ -161,5 +177,6 @@
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Label lblAssignment;
         private System.Windows.Forms.CheckBox chkComplete;
+        private System.Windows.Forms.PictureBox picProgress;
     }
 }
