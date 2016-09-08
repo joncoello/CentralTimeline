@@ -12,8 +12,8 @@ namespace CentralTimeline.Controls {
         public readonly TimelineItemView Item;
         public Brush PanelBrush = Brushes.White;
 
-        private const int COLLAPSED_HEIGHT = 50;
-        private const int EXPANDED_HEIGHT = 100;
+        public const int COLLAPSED_HEIGHT = 50;
+        public const int EXPANDED_HEIGHT = 100;
 
         public event EventHandler Highlighted;
 

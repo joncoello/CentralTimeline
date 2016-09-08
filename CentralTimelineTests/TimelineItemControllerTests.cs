@@ -46,6 +46,59 @@ namespace CentralTimelineTests {
 
             Assert.AreEqual(Color.WhiteSmoke, sut.Item.ControlBackColour);
 
+            sut.MouseLeavesControl();
+
+            Assert.AreEqual(Color.White, sut.Item.ControlBackColour);
+
+        }
+
+        [TestMethod]
+        public void TimelineItemController_MouseEntersControl_SizeChanges() {
+
+            var sut = CreateSUT();
+
+            Assert.AreEqual(TimelineItemController.COLLAPSED_HEIGHT, sut.Item.Height);
+
+            sut.MouseEntersControl();
+
+            Assert.AreEqual(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
+
+            sut.MouseLeavesControl();
+
+            Assert.AreEqual(TimelineItemController.COLLAPSED_HEIGHT, sut.Item.Height);
+
+        }
+
+        [TestMethod]
+        public void TimelineItemController_MouseEntersControl_ControlVisibilityChanges() {
+
+            var sut = CreateSUT();
+
+            Assert.AreEqual(false, sut.Item.AssignmentVisible);
+
+            sut.MouseEntersControl();
+
+            Assert.AreEqual(true, sut.Item.AssignmentVisible);
+
+            sut.MouseLeavesControl();
+
+            Assert.AreEqual(false, sut.Item.AssignmentVisible);
+
+        }
+
+        [TestMethod]
+        public void TimelineItemController_SignOffTask_StaysExpanded() {
+
+            var sut = CreateSUT();
+
+            sut.MouseEntersControl();
+
+            sut.Item.IsComplete = true;
+
+            sut.MouseLeavesControl();
+
+            Assert.AreEqual(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
+
         }
 
         private TimelineItemController CreateSUT() {
