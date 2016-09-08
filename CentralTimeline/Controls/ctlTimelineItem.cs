@@ -22,6 +22,7 @@ namespace CentralTimeline.Controls {
         public ctlTimelineItem(TimelineItem item) {
             InitializeComponent();
             this.item = item;
+            this.Height = 60;
         }
 
         protected override void OnLoad(EventArgs e) {
@@ -36,6 +37,7 @@ namespace CentralTimeline.Controls {
                     picAssignedTo.Image = imageList.Images[1];
                 }
                 lblAssignment.Text = item.Assignment;
+                chkComplete.Checked = item.IsComplete;
             }
         }
 
@@ -86,16 +88,37 @@ namespace CentralTimeline.Controls {
         }
 
         private void Highlight(bool proposedState) {
-            chkComplete.Visible = proposedState;
-            if (proposedState) {
-                panel1.BackColor = Color.WhiteSmoke;
-            } else {
-                panel1.BackColor = Color.White;
+            if (!item.IsComplete) {
+                chkComplete.Visible = proposedState;
+                if (proposedState) {
+                    panel1.BackColor = Color.WhiteSmoke;
+                    this.Height = 80;
+                } else {
+                    panel1.BackColor = Color.White;
+                    this.Height = 60;
+                }
             }
         }
 
         private void lblDue_Click(object sender, EventArgs e) {
 
+        }
+
+        private void chkComplete_CheckedChanged(object sender, EventArgs e) {
+            item.IsComplete = chkComplete.Checked;
+            if (chkComplete.Checked) {
+                panel1.BackColor = Color.WhiteSmoke;
+                lblDescription.ForeColor = Color.LightGray;
+                lblAssignment.ForeColor = Color.LightGray;
+                lblDue.ForeColor = Color.LightGray;
+                lblName.ForeColor = Color.LightGray;
+            } else {
+                panel1.BackColor = Color.White;
+                lblDescription.ForeColor = SystemColors.ControlText;
+                lblAssignment.ForeColor = Color.Gray;
+                lblDue.ForeColor = Color.Gray;
+                lblName.ForeColor = Color.Gray;
+            }
         }
     }
 }

@@ -59,7 +59,7 @@
             this.panel1.Controls.Add(this.lblName);
             this.panel1.Location = new System.Drawing.Point(100, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 89);
+            this.panel1.Size = new System.Drawing.Size(304, 53);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
@@ -79,6 +79,7 @@
             this.chkComplete.Text = "complete";
             this.chkComplete.UseVisualStyleBackColor = true;
             this.chkComplete.Visible = false;
+            this.chkComplete.CheckedChanged += new System.EventHandler(this.chkComplete_CheckedChanged);
             // 
             // lblAssignment
             // 
@@ -141,7 +142,7 @@
             this.Controls.Add(this.picAssignedTo);
             this.Controls.Add(this.lblDue);
             this.Name = "ctlTimelineItem";
-            this.Size = new System.Drawing.Size(407, 95);
+            this.Size = new System.Drawing.Size(407, 60);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlTimelineItem_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).EndInit();
             this.panel1.ResumeLayout(false);
