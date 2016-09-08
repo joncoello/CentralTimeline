@@ -14,5 +14,20 @@ namespace CentralTimelineTests {
 
         }
 
+        [TestMethod]
+        public void TimelineItemController_NameLabel() {
+
+            var expected = "Step 1";
+
+            var item = new CentralTimeline.Models.TimelineItem() {
+                Name = expected
+            };
+
+            var sut = new CentralTimeline.Controls.TimelineItemController(item);
+
+            Assert.AreEqual(expected, sut.Item.Name);
+
+        }
+
     }
 }
