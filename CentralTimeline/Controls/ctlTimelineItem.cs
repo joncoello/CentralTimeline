@@ -14,6 +14,7 @@ namespace CentralTimeline.Controls {
     public partial class ctlTimelineItem : UserControl {
 
         private TimelineItem item;
+        public event EventHandler Highlighted;
 
         public ctlTimelineItem() {
             InitializeComponent();
@@ -87,12 +88,15 @@ namespace CentralTimeline.Controls {
             }
         }
 
-        private void Highlight(bool proposedState) {
+        public void Highlight(bool proposedState) {
             if (!item.IsComplete) {
                 chkComplete.Visible = proposedState;
                 if (proposedState) {
                     panel1.BackColor = Color.WhiteSmoke;
                     this.Height = 100;
+                    if (this.Highlighted!=null) {
+                        this.Highlighted(this, EventArgs.Empty);
+                    }
                 } else {
                     panel1.BackColor = Color.White;
                     this.Height = 70;

@@ -23,19 +23,17 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.ctlTimeline1 = new CentralTimeline.Controls.ctlTimeline();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel
+            // ctlTimeline1
             // 
-            this.flowLayoutPanel.BackColor = System.Drawing.SystemColors.Window;
-            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(375, 685);
-            this.flowLayoutPanel.TabIndex = 0;
-            this.flowLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel_Paint);
-            this.flowLayoutPanel.Resize += new System.EventHandler(this.flowLayoutPanel_Resize);
+            this.ctlTimeline1.BackColor = System.Drawing.SystemColors.Control;
+            this.ctlTimeline1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctlTimeline1.Location = new System.Drawing.Point(0, 0);
+            this.ctlTimeline1.Name = "ctlTimeline1";
+            this.ctlTimeline1.Size = new System.Drawing.Size(375, 685);
+            this.ctlTimeline1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -43,7 +41,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(375, 685);
-            this.Controls.Add(this.flowLayoutPanel);
+            this.Controls.Add(this.ctlTimeline1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Form1";
             this.ResumeLayout(false);
@@ -52,7 +50,7 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private Controls.ctlTimeline ctlTimeline1;
     }
 }
 

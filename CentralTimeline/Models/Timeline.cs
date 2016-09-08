@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CentralTimeline.Models {
-    class Timeline {
+    public class Timeline {
         public string Name { get; set; }
         public List<TimelineItem> Items { get; private set; }
         public Timeline() {
