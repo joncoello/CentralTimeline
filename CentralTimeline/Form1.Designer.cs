@@ -28,13 +28,11 @@
             // 
             // flowLayoutPanel
             // 
-            this.flowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(12, 12);
+            this.flowLayoutPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(356, 661);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(375, 685);
             this.flowLayoutPanel.TabIndex = 0;
             this.flowLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel_Paint);
             this.flowLayoutPanel.Resize += new System.EventHandler(this.flowLayoutPanel_Resize);
@@ -43,7 +41,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 685);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(375, 685);
             this.Controls.Add(this.flowLayoutPanel);
             this.Name = "Form1";
             this.Text = "Form1";

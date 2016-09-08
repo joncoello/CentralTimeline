@@ -18,5 +18,7 @@ namespace CentralTimeline.Models {
 
         public AssignedType AssignedToType { get; set; }
 
+        public string Assignment { get; set; }
+
     }
 }
