@@ -20,8 +20,18 @@ namespace CentralTimeline {
             var repo = new Repo.TimelineRepository();
             var timeline = repo.GetTimeline();
 
-            ctlTimeline1.DataBind(timeline);
+            //ctlTimeline1.DataBind(timeline);
 
+            foreach (var item in timeline.Items) {
+                flowLayoutPanel.Controls.Add(new Controls.ctlTimelineItem(item));
+            }
+
+        }
+
+        private void flowLayoutPanel_Paint(object sender, PaintEventArgs e) {
+            int leftMargin = 27;
+            int topMargin = 10;
+            e.Graphics.DrawLine(Pens.Black, leftMargin, topMargin, leftMargin, flowLayoutPanel.Height - topMargin);
         }
     }
 }

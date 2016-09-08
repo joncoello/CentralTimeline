@@ -52,6 +52,12 @@
     <Compile Include="Controls\ctlTimeline.Designer.cs">
       <DependentUpon>ctlTimeline.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ctlTimelineItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctlTimelineItem.Designer.cs">
+      <DependentUpon>ctlTimelineItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="Repo\TimelineRepository.cs" />
     <EmbeddedResource Include="Controls\ctlTimeline.resx">
       <DependentUpon>ctlTimeline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctlTimelineItem.resx">
+      <DependentUpon>ctlTimelineItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
