@@ -50,9 +50,9 @@
             this.panel1.Controls.Add(this.lblAssignment);
             this.panel1.Controls.Add(this.lblDescription);
             this.panel1.Controls.Add(this.lblName);
-            this.panel1.Location = new System.Drawing.Point(100, 3);
+            this.panel1.Location = new System.Drawing.Point(71, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(226, 89);
+            this.panel1.Size = new System.Drawing.Size(225, 89);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
@@ -61,8 +61,8 @@
             // picProgress
             // 
             this.picProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.picProgress.Image = global::CentralTimeline.Properties.Resources.ajax_loader;
-            this.picProgress.Location = new System.Drawing.Point(206, 69);
+            this.picProgress.Image = ((System.Drawing.Image)(resources.GetObject("picProgress.Image")));
+            this.picProgress.Location = new System.Drawing.Point(205, 69);
             this.picProgress.Name = "picProgress";
             this.picProgress.Size = new System.Drawing.Size(16, 16);
             this.picProgress.TabIndex = 5;
@@ -74,11 +74,11 @@
             this.chkComplete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkComplete.AutoSize = true;
             this.chkComplete.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkComplete.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkComplete.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkComplete.ForeColor = System.Drawing.Color.Gray;
-            this.chkComplete.Location = new System.Drawing.Point(136, 65);
+            this.chkComplete.Location = new System.Drawing.Point(138, 65);
             this.chkComplete.Name = "chkComplete";
-            this.chkComplete.Size = new System.Drawing.Size(87, 23);
+            this.chkComplete.Size = new System.Drawing.Size(84, 21);
             this.chkComplete.TabIndex = 4;
             this.chkComplete.Text = "complete";
             this.chkComplete.UseVisualStyleBackColor = true;
@@ -86,44 +86,44 @@
             // lblAssignment
             // 
             this.lblAssignment.AutoSize = true;
-            this.lblAssignment.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAssignment.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAssignment.ForeColor = System.Drawing.Color.Gray;
             this.lblAssignment.Location = new System.Drawing.Point(14, 31);
             this.lblAssignment.Name = "lblAssignment";
-            this.lblAssignment.Size = new System.Drawing.Size(95, 19);
+            this.lblAssignment.Size = new System.Drawing.Size(89, 17);
             this.lblAssignment.TabIndex = 3;
             this.lblAssignment.Text = "lblAssignment";
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.Location = new System.Drawing.Point(14, 8);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(114, 23);
+            this.lblDescription.Size = new System.Drawing.Size(92, 19);
             this.lblDescription.TabIndex = 1;
             this.lblDescription.Text = "lblDescription";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.Gray;
             this.lblName.Location = new System.Drawing.Point(14, 67);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(59, 19);
+            this.lblName.Size = new System.Drawing.Size(57, 17);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "lblName";
             // 
             // lblDue
             // 
             this.lblDue.BackColor = System.Drawing.Color.White;
-            this.lblDue.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDue.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDue.ForeColor = System.Drawing.Color.Gray;
             this.lblDue.Location = new System.Drawing.Point(-4, 35);
             this.lblDue.Name = "lblDue";
             this.lblDue.Padding = new System.Windows.Forms.Padding(1);
-            this.lblDue.Size = new System.Drawing.Size(90, 19);
+            this.lblDue.Size = new System.Drawing.Size(70, 19);
             this.lblDue.TabIndex = 2;
             this.lblDue.Text = "lblDue";
             // 
@@ -137,7 +137,7 @@
             // picAssignedTo
             // 
             this.picAssignedTo.Image = global::CentralTimeline.Properties.Resources.disc_jockey;
-            this.picAssignedTo.Location = new System.Drawing.Point(19, 2);
+            this.picAssignedTo.Location = new System.Drawing.Point(12, 2);
             this.picAssignedTo.Name = "picAssignedTo";
             this.picAssignedTo.Size = new System.Drawing.Size(32, 32);
             this.picAssignedTo.TabIndex = 3;
@@ -153,7 +153,7 @@
             this.Controls.Add(this.lblDue);
             this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.Name = "ctlTimelineItem";
-            this.Size = new System.Drawing.Size(329, 96);
+            this.Size = new System.Drawing.Size(299, 96);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlTimelineItem_Paint);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

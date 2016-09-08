@@ -67,8 +67,8 @@ namespace CentralTimeline.Controls {
             // define triangle pointing to stage
             var l = panel1.Location;
             var topPoint = new Point(l.X, l.Y + 10);
-            var bottomPoint = new Point(l.X, l.Y + 30);
-            var leftPoint = new Point(l.X - 10, l.Y + 20);
+            var bottomPoint = new Point(l.X, l.Y + 20);
+            var leftPoint = new Point(l.X - 5, l.Y + 15);
 
             // fill it
             var pathToFill = new GraphicsPath(
@@ -88,7 +88,7 @@ namespace CentralTimeline.Controls {
             e.Graphics.DrawLine(Pens.LightGray, 0, 0, p.Width, 0);
             e.Graphics.DrawLine(Pens.LightGray, p.Width - 1, 0, p.Width - 1, p.Height);
             e.Graphics.DrawLine(Pens.LightGray, p.Width - 1, p.Height - 1, 0, p.Height - 1);
-            e.Graphics.DrawLine(Pens.LightGray, 0, p.Height - 1, 0, 30);
+            e.Graphics.DrawLine(Pens.LightGray, 0, p.Height - 1, 0, 20);
             e.Graphics.DrawLine(Pens.LightGray, 0, 10, 0, 0);
         }
 

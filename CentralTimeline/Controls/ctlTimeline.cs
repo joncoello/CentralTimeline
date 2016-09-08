@@ -38,7 +38,7 @@ namespace CentralTimeline.Controls {
         }
 
         private void flowLayoutPanel_Paint(object sender, PaintEventArgs e) {
-            int leftMargin = 37;
+            int leftMargin = 32;
             int topMargin = 10;
             e.Graphics.DrawLine(new Pen(Color.LightGray, 3), leftMargin, topMargin, leftMargin, flowLayoutPanel.Height - topMargin);
         }
