@@ -15,17 +15,32 @@ namespace CentralTimelineTests {
         }
 
         [TestMethod]
-        public void TimelineItemController_NameLabel() {
+        public void TimelineItemController_Labels() {
 
-            var expected = "Step 1";
+            var expectedName = "Step 1";
+            var expectedDescription = "Description 1";
+            var expectedAssignedToType = CentralTimeline.Models.TimelineItem.AssignedType.Client;
+            var expectedAssignment = "Tax";
+            var expectedDue = "1234";
+            var expectedIsComplete = true;
 
             var item = new CentralTimeline.Models.TimelineItem() {
-                Name = expected
+                Name = expectedName,
+                Description = expectedDescription,
+                AssignedToType = expectedAssignedToType,
+                Assignment = expectedAssignment,
+                Due = expectedDue,
+                IsComplete = expectedIsComplete
             };
 
             var sut = new CentralTimeline.Controls.TimelineItemController(item);
 
-            Assert.AreEqual(expected, sut.Item.Name);
+            Assert.AreEqual(expectedName, sut.Item.Name);
+            Assert.AreEqual(expectedDescription, sut.Item.Description);
+            Assert.AreEqual(expectedAssignedToType, sut.Item.AssignedToType);
+            Assert.AreEqual(expectedAssignment, sut.Item.Assignment);
+            Assert.AreEqual(expectedDue, sut.Item.Due);
+            Assert.AreEqual(expectedIsComplete, sut.Item.IsComplete);
 
         }
 
