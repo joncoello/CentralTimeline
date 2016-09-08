@@ -22,7 +22,7 @@ namespace CentralTimeline.Controls {
         public ctlTimelineItem(TimelineItem item) {
             InitializeComponent();
             this.item = item;
-            this.Height = 60;
+            this.Height = 70;
         }
 
         protected override void OnLoad(EventArgs e) {
@@ -31,11 +31,11 @@ namespace CentralTimeline.Controls {
                 lblDescription.Text = item.Description;
                 lblName.Text = item.Name;
                 lblDue.Text = item.Due;
-                if (item.AssignedToType == TimelineItem.AssignedType.Client) {
-                    picAssignedTo.Image = imageList.Images[0];
-                } else {
-                    picAssignedTo.Image = imageList.Images[1];
-                }
+                //if (item.AssignedToType == TimelineItem.AssignedType.Client) {
+                //    picAssignedTo.Image = CentralTimeline.Properties.Resources.businessman;
+                //} else {
+                //    picAssignedTo.Image = CentralTimeline.Properties.Resources.studying;
+                //}
                 lblAssignment.Text = item.Assignment;
                 chkComplete.Checked = item.IsComplete;
             }
@@ -92,10 +92,10 @@ namespace CentralTimeline.Controls {
                 chkComplete.Visible = proposedState;
                 if (proposedState) {
                     panel1.BackColor = Color.WhiteSmoke;
-                    this.Height = 80;
+                    this.Height = 100;
                 } else {
                     panel1.BackColor = Color.White;
-                    this.Height = 60;
+                    this.Height = 70;
                 }
             }
         }

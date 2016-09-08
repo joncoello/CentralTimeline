@@ -30,13 +30,17 @@ namespace CentralTimeline {
         }
 
         private void flowLayoutPanel_Paint(object sender, PaintEventArgs e) {
-            int leftMargin = 30;
+            int leftMargin = 37;
             int topMargin = 10;
             e.Graphics.DrawLine(new Pen(Color.LightGray, 3), leftMargin, topMargin, leftMargin, flowLayoutPanel.Height - topMargin);
         }
 
         private void flowLayoutPanel_Resize(object sender, EventArgs e) {
             flowLayoutPanel.Refresh();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e) {
+
         }
     }
 }

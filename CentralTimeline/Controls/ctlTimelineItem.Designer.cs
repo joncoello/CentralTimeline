@@ -25,7 +25,6 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctlTimelineItem));
-            this.picAssignedTo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkComplete = new System.Windows.Forms.CheckBox();
             this.lblAssignment = new System.Windows.Forms.Label();
@@ -33,19 +32,10 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblDue = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).BeginInit();
+            this.picAssignedTo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picAssignedTo
-            // 
-            this.picAssignedTo.Image = global::CentralTimeline.Properties.Resources.student;
-            this.picAssignedTo.Location = new System.Drawing.Point(19, 11);
-            this.picAssignedTo.Name = "picAssignedTo";
-            this.picAssignedTo.Size = new System.Drawing.Size(40, 40);
-            this.picAssignedTo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAssignedTo.TabIndex = 3;
-            this.picAssignedTo.TabStop = false;
             // 
             // panel1
             // 
@@ -59,7 +49,7 @@
             this.panel1.Controls.Add(this.lblName);
             this.panel1.Location = new System.Drawing.Point(100, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 53);
+            this.panel1.Size = new System.Drawing.Size(304, 63);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
@@ -133,20 +123,29 @@
             this.imageList.Images.SetKeyName(0, "studying.png");
             this.imageList.Images.SetKeyName(1, "student.png");
             // 
+            // picAssignedTo
+            // 
+            this.picAssignedTo.Image = global::CentralTimeline.Properties.Resources.businessman;
+            this.picAssignedTo.Location = new System.Drawing.Point(19, 11);
+            this.picAssignedTo.Name = "picAssignedTo";
+            this.picAssignedTo.Size = new System.Drawing.Size(40, 40);
+            this.picAssignedTo.TabIndex = 3;
+            this.picAssignedTo.TabStop = false;
+            // 
             // ctlTimelineItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.picAssignedTo);
             this.Controls.Add(this.lblDue);
             this.Name = "ctlTimelineItem";
-            this.Size = new System.Drawing.Size(407, 60);
+            this.Size = new System.Drawing.Size(407, 70);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlTimelineItem_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
