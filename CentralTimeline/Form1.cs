@@ -12,6 +12,7 @@ namespace CentralTimeline {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
+            this.ResizeRedraw = true;
         }
 
         protected override void OnLoad(EventArgs e) {
@@ -32,6 +33,10 @@ namespace CentralTimeline {
             int leftMargin = 27;
             int topMargin = 10;
             e.Graphics.DrawLine(Pens.Black, leftMargin, topMargin, leftMargin, flowLayoutPanel.Height - topMargin);
+        }
+
+        private void flowLayoutPanel_Resize(object sender, EventArgs e) {
+            flowLayoutPanel.Refresh();
         }
     }
 }

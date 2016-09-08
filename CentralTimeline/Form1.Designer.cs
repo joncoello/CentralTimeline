@@ -37,6 +37,7 @@
             this.flowLayoutPanel.Size = new System.Drawing.Size(356, 661);
             this.flowLayoutPanel.TabIndex = 0;
             this.flowLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel_Paint);
+            this.flowLayoutPanel.Resize += new System.EventHandler(this.flowLayoutPanel_Resize);
             // 
             // Form1
             // 

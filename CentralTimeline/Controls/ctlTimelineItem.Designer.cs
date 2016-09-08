@@ -38,7 +38,7 @@
             // picAssignedTo
             // 
             this.picAssignedTo.Image = global::CentralTimeline.Properties.Resources.student;
-            this.picAssignedTo.Location = new System.Drawing.Point(14, 27);
+            this.picAssignedTo.Location = new System.Drawing.Point(13, 11);
             this.picAssignedTo.Name = "picAssignedTo";
             this.picAssignedTo.Size = new System.Drawing.Size(40, 40);
             this.picAssignedTo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -51,15 +51,16 @@
             this.panel1.Controls.Add(this.lblDue);
             this.panel1.Controls.Add(this.lblDescription);
             this.panel1.Controls.Add(this.lblName);
-            this.panel1.Location = new System.Drawing.Point(87, 19);
+            this.panel1.Location = new System.Drawing.Point(88, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(224, 80);
+            this.panel1.Size = new System.Drawing.Size(224, 67);
             this.panel1.TabIndex = 5;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(14, 31);
+            this.lblName.Location = new System.Drawing.Point(14, 25);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(59, 17);
             this.lblName.TabIndex = 0;
@@ -77,7 +78,7 @@
             // lblDue
             // 
             this.lblDue.AutoSize = true;
-            this.lblDue.Location = new System.Drawing.Point(14, 56);
+            this.lblDue.Location = new System.Drawing.Point(14, 42);
             this.lblDue.Name = "lblDue";
             this.lblDue.Size = new System.Drawing.Size(48, 17);
             this.lblDue.TabIndex = 2;
@@ -98,7 +99,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.picAssignedTo);
             this.Name = "ctlTimelineItem";
-            this.Size = new System.Drawing.Size(348, 122);
+            this.Size = new System.Drawing.Size(348, 73);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlTimelineItem_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
