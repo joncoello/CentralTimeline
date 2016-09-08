@@ -82,7 +82,6 @@
             this.chkComplete.TabIndex = 4;
             this.chkComplete.Text = "complete";
             this.chkComplete.UseVisualStyleBackColor = true;
-            this.chkComplete.CheckedChanged += new System.EventHandler(this.chkComplete_CheckedChanged);
             // 
             // lblAssignment
             // 
@@ -94,7 +93,6 @@
             this.lblAssignment.Size = new System.Drawing.Size(95, 19);
             this.lblAssignment.TabIndex = 3;
             this.lblAssignment.Text = "lblAssignment";
-            this.lblAssignment.Visible = false;
             // 
             // lblDescription
             // 
@@ -128,7 +126,6 @@
             this.lblDue.Size = new System.Drawing.Size(90, 19);
             this.lblDue.TabIndex = 2;
             this.lblDue.Text = "lblDue";
-            this.lblDue.Click += new System.EventHandler(this.lblDue_Click);
             // 
             // imageList
             // 

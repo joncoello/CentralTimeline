@@ -106,53 +106,9 @@ namespace CentralTimeline.Controls {
             } else {
                 Controller.MouseLeavesControl();
             }
+            this.Refresh();
         }
-
         
-
-        private void lblDue_Click(object sender, EventArgs e) {
-
-        }
-
-        private void chkComplete_CheckedChanged(object sender, EventArgs e) {
-
-            //picProgress.Image = CentralTimeline.Properties.Resources.ajax_loader;
-
-            //bool chkVisible = chkComplete.Visible;
-
-            //item.IsComplete = chkComplete.Checked;
-            //if (chkVisible) {
-            //    chkComplete.Visible = false;
-            //    picProgress.Visible = true;
-            //} 
-
-            //if (chkComplete.Checked) {
-            //    panel1.BackColor = Color.WhiteSmoke;
-            //    lblDescription.ForeColor = Color.LightGray;
-            //    lblAssignment.ForeColor = Color.LightGray;
-            //    lblDue.ForeColor = Color.LightGray;
-            //    lblName.ForeColor = Color.LightGray;
-            //} else {
-            //    panel1.BackColor = Color.White;
-            //    lblDescription.ForeColor = SystemColors.ControlText;
-            //    lblAssignment.ForeColor = Color.Gray;
-            //    lblDue.ForeColor = Color.Gray;
-            //    lblName.ForeColor = Color.Gray;
-            //}
-
-            //await Task.Run(() => {
-            //     System.Threading.Thread.Sleep(2000);
-            //});
-
-            //picProgress.Image = CentralTimeline.Properties.Resources.check2;
-
-            //if (!chkVisible) {
-            //    chkComplete.Visible = true;
-            //    picProgress.Visible = false;
-            //}
-
-        }
-
         private void picProgress_Click(object sender, EventArgs e) {
             chkComplete.Checked = false;
         }

@@ -55,7 +55,7 @@ namespace CentralTimeline.Controls {
             } else {
                 Item.ControlBackColour = Color.White;
                 Item.DescriptionForeColour = SystemColors.ControlText;
-                Item.ControlForeColour = Color.Gray;
+                Item.ControlForeColour = Color.Black;
             }
 
             await Task.Run(() => {
