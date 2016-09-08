@@ -110,7 +110,8 @@ namespace CentralTimeline.Controls {
         }
         
         private void picProgress_Click(object sender, EventArgs e) {
-            chkComplete.Checked = false;
+            Controller.Item.IsComplete = false;
+            Refresh();
         }
     }
 }
