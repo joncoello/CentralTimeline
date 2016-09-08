@@ -23,12 +23,13 @@ namespace CentralTimeline.Controls {
                 Assignment = item.Assignment,
                 Description = item.Description,
                 Due = item.Due,
-                IsComplete = item.IsComplete,
-                Name = item.Name,
-                Height = COLLAPSED_HEIGHT,
-                ControlBackColour = Color.White
+                IsComplete = false,
+                Name = item.Name
             };
             Item.PropertyChanged += Item_PropertyChanged;
+            MouseEntersControl();
+            Item.IsComplete = item.IsComplete;
+            MouseLeavesControl();
         }
 
         private async void Item_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {

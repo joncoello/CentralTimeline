@@ -8,12 +8,14 @@ namespace CentralTimelineTests {
     [TestClass]
     public class TimelineItemControllerTests {
 
+        #region constants
         private const string expectedName = "Step 1";
         private const string expectedDescription = "Description 1";
         private const TimelineItem.AssignedType expectedAssignedToType = TimelineItem.AssignedType.Client;
         private const string expectedAssignment = "Tax";
         private const string expectedDue = "1234";
-        private const bool expectedIsComplete = false;
+        private const bool expectedIsComplete = false; 
+        #endregion
 
         [TestMethod]
         public void TimelineItemController_Create() {
@@ -101,22 +103,59 @@ namespace CentralTimelineTests {
 
         }
 
-        private TimelineItemController CreateSUT() {
+        [TestMethod]
+        public void TimelineItemController_SignOffTask_CheckBoxHidden() {
+
+            var sut = CreateSUT();
+
+            sut.MouseEntersControl();
+
+            Assert.AreEqual(true, sut.Item.IsCompleteVisible);
+
+            sut.Item.IsComplete = true;
+
+            Assert.AreEqual(false, sut.Item.IsCompleteVisible);
+            Assert.AreEqual(true, sut.Item.LoadingIconVisible);
+
+
+        }
+
+        [TestMethod]
+        public void TimelineItemController_StartWithComplete_IsExpanded() {
+
+            var builder = CreateDefaultSUTBuilder();
+            builder.WithIsComplete(true);
+            var sut = builder.Build();
             
-            var item = new TimelineItem() {
-                Name = expectedName,
-                Description = expectedDescription,
-                AssignedToType = expectedAssignedToType,
-                Assignment = expectedAssignment,
-                Due = expectedDue,
-                IsComplete = expectedIsComplete
-            };
+            Assert.AreEqual(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
+            
+        }
 
-            var sut = new TimelineItemController(item);
+        #region sut builder
+        private TimelineItemController CreateSUT() {
 
+            var builder = CreateDefaultSUTBuilder();
+            var sut = builder.Build();
             return sut;
 
         }
 
-    }
+        private TimelineItemControllerBuilder CreateDefaultSUTBuilder() {
+
+            var builder = new TimelineItemControllerBuilder();
+            builder
+                .WithName(expectedName)
+                .WithDescription(expectedDescription)
+                .WithAssignedToType(expectedAssignedToType)
+                .WithAssignment(expectedAssignment)
+                .WithDue(expectedDue)
+                .WithIsComplete(expectedIsComplete);
+
+            return builder;
+
+        }
+
+            #endregion
+
+        }
 }
