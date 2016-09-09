@@ -23,21 +23,12 @@ namespace CentralTimeline.Controls {
                 Assignment = item.Assignment,
                 Description = item.Description,
                 DueDate = item.DueDate,
-                IsComplete = !item.IsComplete,
+                _isComplete = !item.IsComplete,
                 Name = item.Name
             };
-            Item.PropertyChanged += Item_PropertyChanged;
             MouseEntersControl();
-            Item.IsComplete = item.IsComplete;
+            ChangeIsComplete(item.IsComplete);
             MouseLeavesControl();
-        }
-
-        private async void Item_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
-            switch (e.PropertyName) {
-                case "IsComplete":
-                    await IsCompleteChanged();
-                    break;
-            }
         }
 
         private async Task IsCompleteChanged() {
@@ -104,6 +95,11 @@ namespace CentralTimeline.Controls {
                 }
                 //this.Refresh();
             }
+        }
+
+        public async void ChangeIsComplete(bool value) {
+            Item._isComplete = value;
+            await IsCompleteChanged();
         }
 
     }

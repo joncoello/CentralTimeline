@@ -95,7 +95,7 @@ namespace CentralTimelineTests {
 
             sut.MouseEntersControl();
 
-            sut.Item.IsComplete = true;
+            sut.ChangeIsComplete(true);
 
             sut.MouseLeavesControl();
 
@@ -112,7 +112,7 @@ namespace CentralTimelineTests {
 
             Assert.AreEqual(true, sut.Item.IsCompleteVisible);
 
-            sut.Item.IsComplete = true;
+            sut.ChangeIsComplete(true);
 
             Assert.AreEqual(false, sut.Item.IsCompleteVisible);
             Assert.AreEqual(true, sut.Item.LoadingIconVisible);
@@ -141,12 +141,12 @@ namespace CentralTimelineTests {
             Assert.AreEqual(Pens.Red, sut.Item.BorderColour);
             Assert.IsTrue(sut.Item.OverdueIconVisible);
 
-            sut.Item.IsComplete = true;
+            sut.ChangeIsComplete(true);
 
             Assert.AreEqual(Pens.LightGray, sut.Item.BorderColour);
             Assert.IsFalse(sut.Item.OverdueIconVisible);
 
-            sut.Item.IsComplete = false;
+            sut.ChangeIsComplete(false);
 
             Assert.AreEqual(Pens.Red, sut.Item.BorderColour);
             Assert.IsTrue(sut.Item.OverdueIconVisible);

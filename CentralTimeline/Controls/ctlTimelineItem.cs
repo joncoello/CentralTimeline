@@ -111,7 +111,7 @@ namespace CentralTimeline.Controls {
         }
         
         private void picProgress_Click(object sender, EventArgs e) {
-            Controller.Item.IsComplete = false;
+            Controller.ChangeIsComplete(false);
             Refresh();
         }
     }

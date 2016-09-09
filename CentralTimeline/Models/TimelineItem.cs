@@ -24,7 +24,7 @@ namespace CentralTimeline.Models {
         public AssignedType AssignedToType { get; set; }
         public string Assignment { get; set; }
 
-        private bool _isComplete;
+        internal bool _isComplete;
         public bool IsComplete {
             get {
                 return _isComplete;

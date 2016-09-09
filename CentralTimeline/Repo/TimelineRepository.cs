@@ -11,7 +11,7 @@ namespace CentralTimeline.Repo {
 
             var timeline = new Models.Timeline() { Name = "Timeline" };
 
-            timeline.Items.Add(new Models.TimelineItem() { Assignment = "Personal Tax", Description = "Information requested", DueDate = DateTime.Parse("30/04/2016"), Name = "Anna Copeland", AssignedToType = Models.TimelineItem.AssignedType.Practice, IsComplete = true });
+            timeline.Items.Add(new Models.TimelineItem() { Assignment = "Personal Tax", Description = "Information requested", DueDate = DateTime.Parse("30/04/2016"), Name = "Anna Copeland", AssignedToType = Models.TimelineItem.AssignedType.Practice, _isComplete = true });
             timeline.Items.Add(new Models.TimelineItem() { Assignment = "Personal Tax", Description = "Send Data", DueDate = DateTime.Parse("20/06/2016"), Name = "Anna Copeland", AssignedToType = Models.TimelineItem.AssignedType.Client });
             timeline.Items.Add(new Models.TimelineItem() { Assignment = "Personal Tax", Description = "Information received", DueDate = DateTime.Parse("30/06/2016"), Name = "Anna Copeland", AssignedToType = Models.TimelineItem.AssignedType.Practice });
             timeline.Items.Add(new Models.TimelineItem() { Assignment = "Personal Tax", Description = "Tax processing", DueDate = DateTime.Parse("30/09/2016"), Name = "Anna Copeland", AssignedToType = Models.TimelineItem.AssignedType.Practice });
