@@ -59,6 +59,7 @@ namespace CentralTimeline.Controls {
             picProgress.DataBindings.Add("Visible", Controller.Item, "LoadingIconVisible", false, DataSourceUpdateMode.OnPropertyChanged);
             lblAssignment.DataBindings.Add("Visible", Controller.Item, "AssignmentVisible", false, DataSourceUpdateMode.OnPropertyChanged);
             this.DataBindings.Add("Height", Controller.Item, "Height", false, DataSourceUpdateMode.OnPropertyChanged);
+            picOverdue.DataBindings.Add("Visible", Controller.Item, "OverdueIconVisible", false, DataSourceUpdateMode.OnPropertyChanged);
 
         }
 

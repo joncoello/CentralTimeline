@@ -34,9 +34,11 @@
             this.lblDue = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.picAssignedTo = new System.Windows.Forms.PictureBox();
+            this.picOverdue = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOverdue)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -45,6 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.picOverdue);
             this.panel1.Controls.Add(this.picProgress);
             this.panel1.Controls.Add(this.chkComplete);
             this.panel1.Controls.Add(this.lblAssignment);
@@ -76,9 +79,9 @@
             this.chkComplete.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkComplete.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkComplete.ForeColor = System.Drawing.Color.Gray;
-            this.chkComplete.Location = new System.Drawing.Point(138, 65);
+            this.chkComplete.Location = new System.Drawing.Point(143, 65);
             this.chkComplete.Name = "chkComplete";
-            this.chkComplete.Size = new System.Drawing.Size(84, 21);
+            this.chkComplete.Size = new System.Drawing.Size(79, 19);
             this.chkComplete.TabIndex = 4;
             this.chkComplete.Text = "complete";
             this.chkComplete.UseVisualStyleBackColor = true;
@@ -90,7 +93,7 @@
             this.lblAssignment.ForeColor = System.Drawing.Color.Gray;
             this.lblAssignment.Location = new System.Drawing.Point(14, 31);
             this.lblAssignment.Name = "lblAssignment";
-            this.lblAssignment.Size = new System.Drawing.Size(89, 17);
+            this.lblAssignment.Size = new System.Drawing.Size(83, 15);
             this.lblAssignment.TabIndex = 3;
             this.lblAssignment.Text = "lblAssignment";
             // 
@@ -111,7 +114,7 @@
             this.lblName.ForeColor = System.Drawing.Color.Gray;
             this.lblName.Location = new System.Drawing.Point(14, 67);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(57, 17);
+            this.lblName.Size = new System.Drawing.Size(52, 15);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "lblName";
             // 
@@ -143,6 +146,16 @@
             this.picAssignedTo.TabIndex = 3;
             this.picAssignedTo.TabStop = false;
             // 
+            // picOverdue
+            // 
+            this.picOverdue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picOverdue.Image = ((System.Drawing.Image)(resources.GetObject("picOverdue.Image")));
+            this.picOverdue.Location = new System.Drawing.Point(205, 8);
+            this.picOverdue.Name = "picOverdue";
+            this.picOverdue.Size = new System.Drawing.Size(16, 16);
+            this.picOverdue.TabIndex = 6;
+            this.picOverdue.TabStop = false;
+            // 
             // ctlTimelineItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -159,6 +172,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOverdue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,5 +187,6 @@
         private System.Windows.Forms.Label lblAssignment;
         private System.Windows.Forms.CheckBox chkComplete;
         private System.Windows.Forms.PictureBox picProgress;
+        private System.Windows.Forms.PictureBox picOverdue;
     }
 }

@@ -47,7 +47,7 @@ namespace CentralTimeline.Controls {
                 }
             }
         }
-        
+
         private bool _isCompleteVisible = true;
         public bool IsCompleteVisible {
             get {
@@ -113,15 +113,41 @@ namespace CentralTimeline.Controls {
             }
         }
 
+        public Pen _borderColour;
         public Pen BorderColour {
+            //get {
+            //    return OverdueIconVisible ? Pens.Red : Pens.LightGray;
+            //}
             get {
-                return !IsComplete && DueDate < DateTime.Today ? Pens.Red : Pens.LightGray;
+                return _borderColour;
+            }
+            set {
+                if (value != _borderColour) {
+                    _borderColour = value;
+                    FirePropertyChanged("BorderColour");
+                }
+            }
+        }
+
+        public bool _overdueIconVisible;
+        public bool OverdueIconVisible {
+            //get {
+            //    return !IsComplete && DueDate < DateTime.Today;
+            //}
+            get {
+                return _overdueIconVisible;
+            }
+            set {
+                if (value != _overdueIconVisible) {
+                    _overdueIconVisible = value;
+                    FirePropertyChanged("OverdueIconVisible");
+                }
             }
         }
 
         public TimelineItemView() {
-            
-        } 
+
+        }
 
     }
 }

@@ -54,10 +54,14 @@ namespace CentralTimeline.Controls {
                 Item.ControlBackColour = Color.WhiteSmoke;
                 Item.DescriptionForeColour = Color.LightGray;
                 Item.ControlForeColour = Color.LightGray;
+                Item.OverdueIconVisible = false;
+                Item.BorderColour = Pens.LightGray;
             } else {
                 Item.ControlBackColour = Color.White;
                 Item.DescriptionForeColour = SystemColors.ControlText;
                 Item.ControlForeColour = Color.Black;
+                Item.OverdueIconVisible = Item.DueDate < DateTime.Now;
+                Item.BorderColour = Item.DueDate < DateTime.Now ? Pens.Red : Pens.LightGray;
             }
 
             await Task.Run(() => {
