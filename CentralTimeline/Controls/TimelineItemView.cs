@@ -113,6 +113,12 @@ namespace CentralTimeline.Controls {
             }
         }
 
+        public Pen BorderColour {
+            get {
+                return !IsComplete && DueDate < DateTime.Today ? Pens.Red : Pens.LightGray;
+            }
+        }
+
         public TimelineItemView() {
             
         } 

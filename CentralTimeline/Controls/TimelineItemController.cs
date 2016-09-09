@@ -55,7 +55,7 @@ namespace CentralTimeline.Controls {
                 Item.DescriptionForeColour = Color.LightGray;
                 Item.ControlForeColour = Color.LightGray;
             } else {
-                Item.ControlBackColour = Item.DueDate < DateTime.Today ? Color.Red : Color.White;
+                Item.ControlBackColour = Color.White;
                 Item.DescriptionForeColour = SystemColors.ControlText;
                 Item.ControlForeColour = Color.Black;
             }
@@ -95,7 +95,7 @@ namespace CentralTimeline.Controls {
                     }
                 } else {
                     PanelBrush = Brushes.White;
-                    Item.ControlBackColour = Item.DueDate < DateTime.Today ? Color.Red : Color.White;
+                    Item.ControlBackColour = Color.White;
                     Item.Height = COLLAPSED_HEIGHT;
                 }
                 //this.Refresh();

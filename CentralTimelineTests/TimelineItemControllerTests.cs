@@ -132,13 +132,21 @@ namespace CentralTimelineTests {
         }
 
         [TestMethod]
-        public void TimelineItemController_StartWithOverdue_ItemIsRed() {
+        public void TimelineItemController_StartWithOverdue_BorderIsRed() {
 
             var builder = CreateDefaultSUTBuilder();
             builder.WithDue(DateTime.Now.AddDays(-1));
             var sut = builder.Build();
 
-            Assert.AreEqual(Color.Red, sut.Item.ControlBackColour);
+            Assert.AreEqual(Pens.Red, sut.Item.BorderColour);
+
+            sut.Item.IsComplete = true;
+
+            Assert.AreEqual(Pens.LightGray, sut.Item.BorderColour);
+
+            sut.Item.IsComplete = false;
+
+            Assert.AreEqual(Pens.Red, sut.Item.BorderColour);
 
         }
 

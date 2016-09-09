@@ -78,18 +78,18 @@ namespace CentralTimeline.Controls {
             e.Graphics.FillPath(Controller.PanelBrush, pathToFill);
 
             // draw border
-            e.Graphics.DrawLine(Pens.LightGray, leftPoint, topPoint);
-            e.Graphics.DrawLine(Pens.LightGray, leftPoint, bottomPoint);
+            e.Graphics.DrawLine(this.Controller.Item.BorderColour, leftPoint, topPoint);
+            e.Graphics.DrawLine(this.Controller.Item.BorderColour, leftPoint, bottomPoint);
 
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e) {
             var p = sender as Panel;
-            e.Graphics.DrawLine(Pens.LightGray, 0, 0, p.Width, 0);
-            e.Graphics.DrawLine(Pens.LightGray, p.Width - 1, 0, p.Width - 1, p.Height);
-            e.Graphics.DrawLine(Pens.LightGray, p.Width - 1, p.Height - 1, 0, p.Height - 1);
-            e.Graphics.DrawLine(Pens.LightGray, 0, p.Height - 1, 0, 20);
-            e.Graphics.DrawLine(Pens.LightGray, 0, 10, 0, 0);
+            e.Graphics.DrawLine(this.Controller.Item.BorderColour, 0, 0, p.Width, 0);
+            e.Graphics.DrawLine(this.Controller.Item.BorderColour, p.Width - 1, 0, p.Width - 1, p.Height);
+            e.Graphics.DrawLine(this.Controller.Item.BorderColour, p.Width - 1, p.Height - 1, 0, p.Height - 1);
+            e.Graphics.DrawLine(this.Controller.Item.BorderColour, 0, p.Height - 1, 0, 20);
+            e.Graphics.DrawLine(this.Controller.Item.BorderColour, 0, 10, 0, 0);
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e) {
