@@ -13,7 +13,7 @@ namespace CentralTimelineTests {
         private const string expectedDescription = "Description 1";
         private const TimelineItem.AssignedType expectedAssignedToType = TimelineItem.AssignedType.Client;
         private const string expectedAssignment = "Tax";
-        private DateTime expectedDue = DateTime.Parse("12/10/2016");
+        private DateTime expectedDue = DateTime.Now.AddDays(10);
         private const bool expectedIsComplete = false;
         #endregion
 
@@ -128,6 +128,17 @@ namespace CentralTimelineTests {
             var sut = builder.Build();
 
             Assert.AreEqual(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
+
+        }
+
+        [TestMethod]
+        public void TimelineItemController_StartWithOverdue_ItemIsRed() {
+
+            var builder = CreateDefaultSUTBuilder();
+            builder.WithDue(DateTime.Now.AddDays(-1));
+            var sut = builder.Build();
+
+            Assert.AreEqual(Color.Red, sut.Item.ControlBackColour);
 
         }
 

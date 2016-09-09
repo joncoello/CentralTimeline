@@ -23,7 +23,7 @@ namespace CentralTimeline.Controls {
                 Assignment = item.Assignment,
                 Description = item.Description,
                 DueDate = item.DueDate,
-                IsComplete = false,
+                IsComplete = !item.IsComplete,
                 Name = item.Name
             };
             Item.PropertyChanged += Item_PropertyChanged;
@@ -55,7 +55,7 @@ namespace CentralTimeline.Controls {
                 Item.DescriptionForeColour = Color.LightGray;
                 Item.ControlForeColour = Color.LightGray;
             } else {
-                Item.ControlBackColour = Color.White;
+                Item.ControlBackColour = Item.DueDate < DateTime.Today ? Color.Red : Color.White;
                 Item.DescriptionForeColour = SystemColors.ControlText;
                 Item.ControlForeColour = Color.Black;
             }
@@ -95,7 +95,7 @@ namespace CentralTimeline.Controls {
                     }
                 } else {
                     PanelBrush = Brushes.White;
-                    Item.ControlBackColour = Color.White;
+                    Item.ControlBackColour = Item.DueDate < DateTime.Today ? Color.Red : Color.White;
                     Item.Height = COLLAPSED_HEIGHT;
                 }
                 //this.Refresh();
