@@ -70,8 +70,8 @@ namespace CentralTimeline.Controls {
             SetStandardVisualProperties();
 
             _isCompleteChanging = false;
-
-            Highlight(_lastState);
+            
+            Highlight(Item.MouseIsInPanel);
 
         }
 

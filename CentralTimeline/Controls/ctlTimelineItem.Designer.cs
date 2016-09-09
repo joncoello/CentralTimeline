@@ -169,6 +169,7 @@
             this.Name = "ctlTimelineItem";
             this.Size = new System.Drawing.Size(299, 96);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlTimelineItem_Paint);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ctlTimelineItem_MouseMove);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picOverdue)).EndInit();

@@ -158,6 +158,8 @@ namespace CentralTimeline.Controls {
             }
         }
 
+        public bool MouseIsInPanel { get; set; }
+
         public TimelineItemView() {
 
         }

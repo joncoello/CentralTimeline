@@ -120,5 +120,8 @@ namespace CentralTimeline.Controls {
             Refresh();
         }
 
+        private void ctlTimelineItem_MouseMove(object sender, MouseEventArgs e) {
+            Controller.Item.MouseIsInPanel = panel1.ClientRectangle.Contains(panel1.PointToClient(Cursor.Position));
+        }
     }
 }
