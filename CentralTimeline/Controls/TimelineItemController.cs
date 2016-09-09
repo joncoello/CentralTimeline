@@ -22,7 +22,7 @@ namespace CentralTimeline.Controls {
                 AssignedToType = item.AssignedToType,
                 Assignment = item.Assignment,
                 Description = item.Description,
-                Due = item.Due,
+                DueDate = item.DueDate,
                 IsComplete = false,
                 Name = item.Name
             };

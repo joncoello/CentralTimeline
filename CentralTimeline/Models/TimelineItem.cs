@@ -15,7 +15,12 @@ namespace CentralTimeline.Models {
         
         public string Description { get; set; }
         public string Name { get; set; }
-        public string Due { get; set; }
+        public DateTime DueDate { get; set; }
+        public string Due {
+            get {
+                return DueDate.ToShortDateString();
+            }
+                }
         public AssignedType AssignedToType { get; set; }
         public string Assignment { get; set; }
 

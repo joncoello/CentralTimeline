@@ -35,8 +35,8 @@ namespace CentralTimelineTests {
             return this;
         }
 
-        public TimelineItemControllerBuilder WithDue(string due) {
-            _item.Due = due;
+        public TimelineItemControllerBuilder WithDue(DateTime dueDate) {
+            _item.DueDate = dueDate;
             return this;
         }
 

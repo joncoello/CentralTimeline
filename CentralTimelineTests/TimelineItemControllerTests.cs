@@ -13,8 +13,8 @@ namespace CentralTimelineTests {
         private const string expectedDescription = "Description 1";
         private const TimelineItem.AssignedType expectedAssignedToType = TimelineItem.AssignedType.Client;
         private const string expectedAssignment = "Tax";
-        private const string expectedDue = "1234";
-        private const bool expectedIsComplete = false; 
+        private DateTime expectedDue = DateTime.Parse("12/10/2016");
+        private const bool expectedIsComplete = false;
         #endregion
 
         [TestMethod]
@@ -25,14 +25,14 @@ namespace CentralTimelineTests {
 
         [TestMethod]
         public void TimelineItemController_Labels() {
-            
+
             var sut = CreateSUT();
-            
+
             Assert.AreEqual(expectedName, sut.Item.Name);
             Assert.AreEqual(expectedDescription, sut.Item.Description);
             Assert.AreEqual(expectedAssignedToType, sut.Item.AssignedToType);
             Assert.AreEqual(expectedAssignment, sut.Item.Assignment);
-            Assert.AreEqual(expectedDue, sut.Item.Due);
+            Assert.AreEqual(expectedDue, sut.Item.DueDate);
             Assert.AreEqual(expectedIsComplete, sut.Item.IsComplete);
 
         }
@@ -126,12 +126,13 @@ namespace CentralTimelineTests {
             var builder = CreateDefaultSUTBuilder();
             builder.WithIsComplete(true);
             var sut = builder.Build();
-            
+
             Assert.AreEqual(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
-            
+
         }
 
         #region sut builder
+
         private TimelineItemController CreateSUT() {
 
             var builder = CreateDefaultSUTBuilder();
@@ -155,7 +156,7 @@ namespace CentralTimelineTests {
 
         }
 
-            #endregion
+        #endregion
 
-        }
+    }
 }
