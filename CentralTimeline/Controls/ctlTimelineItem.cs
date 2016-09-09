@@ -41,7 +41,7 @@ namespace CentralTimeline.Controls {
             lblName.DataBindings.Add("Text", item, "Name", false, DataSourceUpdateMode.OnPropertyChanged);
             lblDue.DataBindings.Add("Text", item, "Due", false, DataSourceUpdateMode.OnPropertyChanged);
             lblAssignment.DataBindings.Add("Text", item, "Assignment", false, DataSourceUpdateMode.OnPropertyChanged);
-            chkComplete.DataBindings.Add("Checked", Controller.Item, "IsComplete", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkComplete.DataBindings.Add("Checked", Controller.Item, "IsCompleteChecked", false, DataSourceUpdateMode.OnPropertyChanged);
 
             if (item.AssignedToType == TimelineItem.AssignedType.Client) {
                 picAssignedTo.Image = CentralTimeline.Properties.Resources.disc_jockey;
@@ -110,9 +110,15 @@ namespace CentralTimeline.Controls {
             this.Refresh();
         }
         
-        private void picProgress_Click(object sender, EventArgs e) {
-            Controller.ChangeIsComplete(false);
+        private async void picProgress_Click(object sender, EventArgs e) {
+            await Controller.ChangeIsComplete(false);
             Refresh();
         }
+
+        private async void chkComplete_CheckedChanged(object sender, EventArgs e) {
+            await Controller.ChangeIsComplete(true);
+            Refresh();
+        }
+
     }
 }

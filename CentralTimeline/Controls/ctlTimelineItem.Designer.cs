@@ -26,6 +26,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctlTimelineItem));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.picOverdue = new System.Windows.Forms.PictureBox();
             this.picProgress = new System.Windows.Forms.PictureBox();
             this.chkComplete = new System.Windows.Forms.CheckBox();
             this.lblAssignment = new System.Windows.Forms.Label();
@@ -34,11 +35,10 @@
             this.lblDue = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.picAssignedTo = new System.Windows.Forms.PictureBox();
-            this.picOverdue = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picOverdue)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -60,6 +60,16 @@
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
+            // 
+            // picOverdue
+            // 
+            this.picOverdue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picOverdue.Image = ((System.Drawing.Image)(resources.GetObject("picOverdue.Image")));
+            this.picOverdue.Location = new System.Drawing.Point(205, 8);
+            this.picOverdue.Name = "picOverdue";
+            this.picOverdue.Size = new System.Drawing.Size(16, 16);
+            this.picOverdue.TabIndex = 6;
+            this.picOverdue.TabStop = false;
             // 
             // picProgress
             // 
@@ -85,6 +95,7 @@
             this.chkComplete.TabIndex = 4;
             this.chkComplete.Text = "complete";
             this.chkComplete.UseVisualStyleBackColor = true;
+            this.chkComplete.CheckedChanged += new System.EventHandler(this.chkComplete_CheckedChanged);
             // 
             // lblAssignment
             // 
@@ -146,16 +157,6 @@
             this.picAssignedTo.TabIndex = 3;
             this.picAssignedTo.TabStop = false;
             // 
-            // picOverdue
-            // 
-            this.picOverdue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picOverdue.Image = ((System.Drawing.Image)(resources.GetObject("picOverdue.Image")));
-            this.picOverdue.Location = new System.Drawing.Point(205, 8);
-            this.picOverdue.Name = "picOverdue";
-            this.picOverdue.Size = new System.Drawing.Size(16, 16);
-            this.picOverdue.TabIndex = 6;
-            this.picOverdue.TabStop = false;
-            // 
             // ctlTimelineItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -170,9 +171,9 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ctlTimelineItem_Paint);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picOverdue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAssignedTo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picOverdue)).EndInit();
             this.ResumeLayout(false);
 
         }

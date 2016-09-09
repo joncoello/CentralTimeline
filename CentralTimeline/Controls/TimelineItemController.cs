@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 namespace CentralTimeline.Controls {
     public class TimelineItemController {
 
+        private bool _lastState;
+        private bool _isCompleteChanging;
+
         public readonly TimelineItemView Item;
         public Brush PanelBrush = Brushes.White;
 
@@ -33,12 +36,18 @@ namespace CentralTimeline.Controls {
             SetStandardVisualProperties();
         }
 
-        private async Task IsCompleteChanged() {
+        private async Task IsCompleteChanged(bool isComplete) {
+
+            _isCompleteChanging = true;
+
+            if (isComplete) {
+                Item.IsComplete = true;
+            }
 
             Item.LoadingIconImage = CentralTimeline.Properties.Resources.ajax_loader;
 
             // if the item has been marked complete then hide the checkbox control and show the loading image
-            if (Item.IsComplete) {
+            if (isComplete) {
                 Item.IsCompleteVisible = false;
                 Item.LoadingIconVisible = true;
             }
@@ -51,10 +60,18 @@ namespace CentralTimeline.Controls {
 
             Item.LoadingIconImage = CentralTimeline.Properties.Resources.check2;
 
-            if (!Item.IsComplete) {
+            if (!isComplete) {
                 Item.IsCompleteVisible = true;
                 Item.LoadingIconVisible = false;
+                Item.Height = COLLAPSED_HEIGHT;
             }
+
+            Item.IsComplete = isComplete;
+            SetStandardVisualProperties();
+
+            _isCompleteChanging = false;
+
+            Highlight(_lastState);
 
         }
 
@@ -75,15 +92,17 @@ namespace CentralTimeline.Controls {
         }
 
         public void MouseEntersControl() {
+            _lastState = true;
             Highlight(true);
         }
 
         public void MouseLeavesControl() {
+            _lastState = false;
             Highlight(false);
         }
 
         public void Highlight(bool proposedState) {
-            if (!Item.IsComplete) {
+            if (!_isCompleteChanging && !Item.IsComplete) {
 
                 Item.AssignmentVisible = proposedState;
 
@@ -103,9 +122,8 @@ namespace CentralTimeline.Controls {
             }
         }
 
-        public async void ChangeIsComplete(bool value) {
-            Item._isComplete = value;
-            await IsCompleteChanged();
+        public async Task ChangeIsComplete(bool value) {
+            await IsCompleteChanged(value);
         }
 
     }

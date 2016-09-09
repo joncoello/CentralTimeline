@@ -145,6 +145,19 @@ namespace CentralTimeline.Controls {
             }
         }
 
+        public bool _isCompleteChecked;
+        public bool IsCompleteChecked {
+            get {
+                return _isCompleteChecked;
+            }
+            set {
+                if (value != _isCompleteChecked) {
+                    _isCompleteChecked = value;
+                    FirePropertyChanged("IsCompleteChecked");
+                }
+            }
+        }
+
         public TimelineItemView() {
 
         }

@@ -1,11 +1,11 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CentralTimeline.Models;
 using CentralTimeline.Controls;
 using System.Drawing;
+using Xunit;
 
 namespace CentralTimelineTests {
-    [TestClass]
+    
     public class TimelineItemControllerTests {
 
         #region constants
@@ -17,139 +17,158 @@ namespace CentralTimelineTests {
         private const bool expectedIsComplete = false;
         #endregion
 
-        [TestMethod]
+        [Fact]
         public void TimelineItemController_Create() {
             var item = new TimelineItem();
             var sut = new TimelineItemController(item);
         }
 
-        [TestMethod]
+        [Fact]
         public void TimelineItemController_Labels() {
 
             var sut = CreateSUT();
 
-            Assert.AreEqual(expectedName, sut.Item.Name);
-            Assert.AreEqual(expectedDescription, sut.Item.Description);
-            Assert.AreEqual(expectedAssignedToType, sut.Item.AssignedToType);
-            Assert.AreEqual(expectedAssignment, sut.Item.Assignment);
-            Assert.AreEqual(expectedDue, sut.Item.DueDate);
-            Assert.AreEqual(expectedIsComplete, sut.Item.IsComplete);
+            Assert.Equal(expectedName, sut.Item.Name);
+            Assert.Equal(expectedDescription, sut.Item.Description);
+            Assert.Equal(expectedAssignedToType, sut.Item.AssignedToType);
+            Assert.Equal(expectedAssignment, sut.Item.Assignment);
+            Assert.Equal(expectedDue, sut.Item.DueDate);
+            Assert.Equal(expectedIsComplete, sut.Item.IsComplete);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void TimelineItemController_MouseEntersControl_BackColorChanges() {
 
             var sut = CreateSUT();
 
-            Assert.AreEqual(Color.White, sut.Item.ControlBackColour);
+            Assert.Equal(Color.White, sut.Item.ControlBackColour);
 
             sut.MouseEntersControl();
 
-            Assert.AreEqual(Color.WhiteSmoke, sut.Item.ControlBackColour);
+            Assert.Equal(Color.WhiteSmoke, sut.Item.ControlBackColour);
 
             sut.MouseLeavesControl();
 
-            Assert.AreEqual(Color.White, sut.Item.ControlBackColour);
+            Assert.Equal(Color.White, sut.Item.ControlBackColour);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void TimelineItemController_MouseEntersControl_SizeChanges() {
 
             var sut = CreateSUT();
 
-            Assert.AreEqual(TimelineItemController.COLLAPSED_HEIGHT, sut.Item.Height);
+            Assert.Equal(TimelineItemController.COLLAPSED_HEIGHT, sut.Item.Height);
 
             sut.MouseEntersControl();
 
-            Assert.AreEqual(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
+            Assert.Equal(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
 
             sut.MouseLeavesControl();
 
-            Assert.AreEqual(TimelineItemController.COLLAPSED_HEIGHT, sut.Item.Height);
+            Assert.Equal(TimelineItemController.COLLAPSED_HEIGHT, sut.Item.Height);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void TimelineItemController_MouseEntersControl_ControlVisibilityChanges() {
 
             var sut = CreateSUT();
 
-            Assert.AreEqual(false, sut.Item.AssignmentVisible);
+            Assert.Equal(false, sut.Item.AssignmentVisible);
 
             sut.MouseEntersControl();
 
-            Assert.AreEqual(true, sut.Item.AssignmentVisible);
+            Assert.Equal(true, sut.Item.AssignmentVisible);
 
             sut.MouseLeavesControl();
 
-            Assert.AreEqual(false, sut.Item.AssignmentVisible);
+            Assert.Equal(false, sut.Item.AssignmentVisible);
 
         }
 
-        [TestMethod]
-        public void TimelineItemController_SignOffTask_StaysExpanded() {
+        [Fact]
+        public async void TimelineItemController_SignOffTask_StaysExpanded() {
 
             var sut = CreateSUT();
 
             sut.MouseEntersControl();
 
-            sut.ChangeIsComplete(true);
+            await sut.ChangeIsComplete(true);
 
             sut.MouseLeavesControl();
 
-            Assert.AreEqual(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
+            Assert.Equal(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void TimelineItemController_SignOffTask_CheckBoxHidden() {
 
             var sut = CreateSUT();
 
             sut.MouseEntersControl();
 
-            Assert.AreEqual(true, sut.Item.IsCompleteVisible);
+            Assert.Equal(true, sut.Item.IsCompleteVisible);
 
             sut.ChangeIsComplete(true);
 
-            Assert.AreEqual(false, sut.Item.IsCompleteVisible);
-            Assert.AreEqual(true, sut.Item.LoadingIconVisible);
+            Assert.Equal(false, sut.Item.IsCompleteVisible);
+            Assert.Equal(true, sut.Item.LoadingIconVisible);
 
 
         }
 
-        [TestMethod]
+        [Fact]
         public void TimelineItemController_StartWithComplete_IsExpanded() {
 
             var builder = CreateDefaultSUTBuilder();
             builder.WithIsComplete(true);
             var sut = builder.Build();
 
-            Assert.AreEqual(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
+            Assert.Equal(TimelineItemController.EXPANDED_HEIGHT, sut.Item.Height);
 
         }
 
-        [TestMethod]
-        public void TimelineItemController_StartWithOverdue_OverdueIndicated() {
+        [Fact]
+        public async void TimelineItemController_StartWithOverdue_OverdueIndicated() {
 
             var builder = CreateDefaultSUTBuilder();
             builder.WithDue(DateTime.Now.AddDays(-1));
             var sut = builder.Build();
 
-            Assert.AreEqual(Pens.Red, sut.Item.BorderColour);
-            Assert.IsTrue(sut.Item.OverdueIconVisible);
+            Assert.Equal(Pens.Red, sut.Item.BorderColour);
+            Assert.True(sut.Item.OverdueIconVisible);
 
-            sut.ChangeIsComplete(true);
+            await sut.ChangeIsComplete(true);
 
-            Assert.AreEqual(Pens.LightGray, sut.Item.BorderColour);
-            Assert.IsFalse(sut.Item.OverdueIconVisible);
+            Assert.Equal(Pens.LightGray, sut.Item.BorderColour);
+            Assert.False(sut.Item.OverdueIconVisible);
 
-            sut.ChangeIsComplete(false);
+            await sut.ChangeIsComplete(false);
 
-            Assert.AreEqual(Pens.Red, sut.Item.BorderColour);
-            Assert.IsTrue(sut.Item.OverdueIconVisible);
+            Assert.Equal(Pens.Red, sut.Item.BorderColour);
+            Assert.True(sut.Item.OverdueIconVisible);
+
+        }
+
+        [Fact]
+        public async void TimelineItemController_StartWithComplete_ToggleSignOff_TestHeight() {
+
+            var builder = CreateDefaultSUTBuilder();
+            builder.WithIsComplete(true);
+            var sut = builder.Build();
+
+            sut.MouseEntersControl();
+
+            var task = sut.ChangeIsComplete(false);
+
+            sut.MouseLeavesControl();
+
+            await task;
+
+            Assert.Equal(TimelineItemController.COLLAPSED_HEIGHT, sut.Item.Height);
 
         }
 
