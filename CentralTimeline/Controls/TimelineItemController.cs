@@ -23,12 +23,14 @@ namespace CentralTimeline.Controls {
                 Assignment = item.Assignment,
                 Description = item.Description,
                 DueDate = item.DueDate,
-                _isComplete = !item.IsComplete,
-                Name = item.Name
-            };
-            MouseEntersControl();
-            ChangeIsComplete(item.IsComplete);
-            MouseLeavesControl();
+                _isComplete = item.IsComplete,
+                Name = item.Name,
+                Height = item.IsComplete ? EXPANDED_HEIGHT : COLLAPSED_HEIGHT,
+                IsCompleteVisible = !item.IsComplete,
+                LoadingIconVisible = item.IsComplete,
+                LoadingIconImage = CentralTimeline.Properties.Resources.check2
+        };
+            SetStandardVisualProperties();
         }
 
         private async Task IsCompleteChanged() {
@@ -41,6 +43,22 @@ namespace CentralTimeline.Controls {
                 Item.LoadingIconVisible = true;
             }
 
+            SetStandardVisualProperties();
+
+            await Task.Run(() => {
+                System.Threading.Thread.Sleep(2000);
+            });
+
+            Item.LoadingIconImage = CentralTimeline.Properties.Resources.check2;
+
+            if (!Item.IsComplete) {
+                Item.IsCompleteVisible = true;
+                Item.LoadingIconVisible = false;
+            }
+
+        }
+
+        private void SetStandardVisualProperties() {
             if (Item.IsComplete) {
                 Item.ControlBackColour = Color.WhiteSmoke;
                 Item.DescriptionForeColour = Color.LightGray;
@@ -54,18 +72,6 @@ namespace CentralTimeline.Controls {
                 Item.OverdueIconVisible = Item.DueDate < DateTime.Now;
                 Item.BorderColour = Item.DueDate < DateTime.Now ? Pens.Red : Pens.LightGray;
             }
-
-            await Task.Run(() => {
-                System.Threading.Thread.Sleep(2000);
-            });
-
-            Item.LoadingIconImage = CentralTimeline.Properties.Resources.check2;
-
-            if (!Item.IsComplete) {
-                Item.IsCompleteVisible = true;
-                Item.LoadingIconVisible = false;
-            }
-
         }
 
         public void MouseEntersControl() {
